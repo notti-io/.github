@@ -3,7 +3,7 @@ import useStore, { initialIsDebug } from '@/api/store'
 import { AdaptiveDpr } from '@react-three/drei'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
-import { Fragment, useLayoutEffect } from 'react'
+import { Fragment, useEffect } from 'react'
 
 const controls = Controls.create('Performance', {
   monitoring: Controls.bool(initialIsDebug),
@@ -17,7 +17,7 @@ function Performance() {
   const isDebug = useStore(state => state.isDebug)
   const [state, set] = useControls(...controls.getFn())
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     set({ monitoring: isDebug })
   }, [set, isDebug])
 
