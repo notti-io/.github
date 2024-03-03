@@ -1,3 +1,4 @@
+import type { Object3D } from 'three'
 import { create } from 'zustand'
 import { mediaQuery } from '@/utils/helpers'
 import { getIsDebug } from '@/utils/state'
@@ -21,6 +22,9 @@ export interface Store {
 
   pointer: Pointer
   setPointerCoords: (x: number, y: number) => void
+
+  world: Object3D | null
+  setWorld: (world: Object3D | null) => void
 }
 
 export const initialIsDebug = getIsDebug()
@@ -48,6 +52,9 @@ const useStore = create<Store>(set => ({
       state.pointer.set(x, y)
       return state
     }),
+
+  world: null,
+  setWorld: world => set({ world }),
 }))
 
 export default useStore

@@ -1,7 +1,6 @@
 import { OrbitControls } from '@react-three/drei'
 import { useControls } from 'leva'
 import { useEffect, useMemo, useRef } from 'react'
-import type { Object3D } from 'three'
 import CameraNutation from '@/api/CameraNutation'
 import Controls from '@/api/Controls'
 import useStore from '@/api/store'
@@ -21,7 +20,7 @@ const nutationControls = Controls.folder('Camera', 'Nutation', {
 function CameraControls() {
   const { isOrbitControls } = useControls(...controls.get())
   const config = useControls(...nutationControls.get())
-  const world: Object3D | null = null
+  const world = useStore(state => state.world)
   const isPointerTouch = useStore(state => state.isPointerTouch)
   const isPointerOut = useStore(state => state.isPointerOut)
   const pointer = useStore(state => state.pointer)
