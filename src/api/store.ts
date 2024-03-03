@@ -1,10 +1,14 @@
 import { getIsDebug } from '@/utils/state'
 import { create } from 'zustand'
 import Pointer from './Pointer'
+import { mediaQuery } from '@/utils/helpers'
 
 export interface Store {
   isDebug: boolean
   setIsDebug: (isDebug: boolean) => void
+
+  isPointerTouch: boolean
+  setIsPointerTouch: (isPointerTouch: boolean) => void
 
   isPointerOut: boolean
   setIsPointerOut: (isPointerOut: boolean) => void
@@ -20,10 +24,14 @@ export interface Store {
 }
 
 export const initialIsDebug = getIsDebug()
+export const initialIsPointerTouch = mediaQuery('(pointer: coarse)')
 
 const useStore = create<Store>(set => ({
   isDebug: initialIsDebug,
   setIsDebug: isDebug => set({ isDebug }),
+
+  isPointerTouch: initialIsPointerTouch,
+  setIsPointerTouch: isPointerTouch => set({ isPointerTouch }),
 
   isPointerOut: true,
   setIsPointerOut: isPointerOut => set({ isPointerOut }),
