@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from '@/App'
 import { disableReactDevToolsIf } from '@/utils/helpers'
-import '@/index.scss'
 
 disableReactDevToolsIf(import.meta.env.PROD)
 
