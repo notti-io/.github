@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import useStore from '@/api/store'
+import Fog from './meshes/Fog'
 
 function World() {
   const setWorld = useStore(state => state.setWorld)
@@ -7,6 +8,7 @@ function World() {
   return (
     <Fragment>
       <ambientLight />
+      <Fog />
       <group ref={setWorld} name='World'>
         <mesh>
           <sphereGeometry args={[1, 32, 32]} />

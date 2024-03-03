@@ -1,13 +1,14 @@
 import { folder as levaFolder } from 'leva'
 import { Schema } from 'leva/dist/declarations/src/types'
 
-type Folder = 'Performance' | 'Camera'
+type Folder = 'Performance' | 'Camera' | 'World'
 type FolderOrders = Record<Folder, number>
 
 class Controls<S extends Schema> {
   private static readonly ORDERS: FolderOrders = {
     Performance: 0,
     Camera: 1,
+    World: 2,
   }
   private folder: Folder
   private controls: S
