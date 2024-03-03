@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import Experience from '@/components/Experience'
-import LevaGui from '@/components/Debug/LevaGui'
+import LevaGui from '@/components/LevaGui'
 import Cursor from '@/components/Cursor'
 import useDebug from '@/hooks/useDebug'
 import usePointer from '@/hooks/usePointer'

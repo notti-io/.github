@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import Performance from './Debug/Performance'
+import Performance from './Performance'
 import CameraControls from './CameraControls'
 
 function Experience() {
