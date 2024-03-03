@@ -1,10 +1,13 @@
 import type { Object3D } from 'three'
 import { create } from 'zustand'
 import { mediaQuery } from '@/utils/helpers'
-import { getIsDebug } from '@/utils/state'
+import { getAccentColor, getIsDebug } from '@/utils/state'
 import Pointer from './Pointer'
 
 export interface Store {
+  accentColor: string
+  setAccentColor: (accentColor: string) => void
+
   isDebug: boolean
   setIsDebug: (isDebug: boolean) => void
 
@@ -27,10 +30,14 @@ export interface Store {
   setWorld: (world: Object3D | null) => void
 }
 
+export const initialAccentColor = getAccentColor()
 export const initialIsDebug = getIsDebug()
 export const initialIsPointerTouch = mediaQuery('(pointer: coarse)')
 
 const useStore = create<Store>(set => ({
+  accentColor: initialAccentColor,
+  setAccentColor: accentColor => set({ accentColor }),
+
   isDebug: initialIsDebug,
   setIsDebug: isDebug => set({ isDebug }),
 
