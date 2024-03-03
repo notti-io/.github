@@ -1,6 +1,6 @@
+import { useEffect } from 'react'
 import useStore from '@/api/store'
 import { getIsDebug } from '@/utils/state'
-import { useEffect } from 'react'
 
 function useDebug() {
   const setIsDebug = useStore(state => state.setIsDebug)

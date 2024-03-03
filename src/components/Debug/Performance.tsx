@@ -1,9 +1,9 @@
-import Controls from '@/api/Controls'
-import useStore, { initialIsDebug } from '@/api/store'
 import { AdaptiveDpr } from '@react-three/drei'
 import { useControls } from 'leva'
-import { Perf } from 'r3f-perf'
 import { Fragment, useEffect } from 'react'
+import { Perf } from 'r3f-perf'
+import Controls from '@/api/Controls'
+import useStore, { initialIsDebug } from '@/api/store'
 
 const controls = Controls.create('Performance', {
   monitoring: Controls.bool(initialIsDebug),

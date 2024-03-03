@@ -1,7 +1,7 @@
-import { getIsDebug } from '@/utils/state'
 import { create } from 'zustand'
-import Pointer from './Pointer'
 import { mediaQuery } from '@/utils/helpers'
+import { getIsDebug } from '@/utils/state'
+import Pointer from './Pointer'
 
 export interface Store {
   isDebug: boolean

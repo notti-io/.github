@@ -1,5 +1,5 @@
-import { Schema } from 'leva/dist/declarations/src/types'
 import { folder as levaFolder } from 'leva'
+import { Schema } from 'leva/dist/declarations/src/types'
 
 type Folder = 'Performance'
 type FolderOrders = Record<Folder, number>

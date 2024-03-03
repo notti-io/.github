@@ -1,5 +1,5 @@
-import useDebug from '@/api/store'
 import { Leva } from 'leva'
+import useDebug from '@/api/store'
 
 function LevaGui() {
   const isDebug = useDebug(state => state.isDebug)
