@@ -15,3 +15,12 @@ export function disableReactDevToolsIf(condition: boolean) {
     globalHook[prop] = typeof globalHook[prop] === 'function' ? noop : null
   }
 }
+
+export function alwaysRedirectTo(to: string) {
+  if (!window) return
+  if (!window.location) return
+  if (!window.location.pathname) return
+  if (typeof window.location.replace !== 'function') return
+  if (window.location.pathname === to) return
+  window.location.replace(to)
+}
