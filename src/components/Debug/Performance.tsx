@@ -1,5 +1,5 @@
 import Controls from '@/api/Controls'
-import useStore, { initialIsDebug } from '@/store'
+import useStore, { initialIsDebug } from '@/api/store'
 import { AdaptiveDpr } from '@react-three/drei'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
@@ -18,7 +18,6 @@ function Performance() {
   const [state, set] = useControls(...controls.getFn())
 
   useLayoutEffect(() => {
-    if (import.meta.env.DEV) return
     set({ monitoring: isDebug })
   }, [set, isDebug])
 

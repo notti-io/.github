@@ -1,11 +1,12 @@
-import useStore from '@/store'
+import useStore from '@/api/store'
+import { getIsDebug } from '@/utils/state'
 import { useEffect } from 'react'
 
-function useDebugWatcher() {
+function useDebug() {
   const setIsDebug = useStore(state => state.setIsDebug)
 
   useEffect(() => {
-    const listener = () => setIsDebug(window.location.hash === '#debug')
+    const listener = () => setIsDebug(getIsDebug())
 
     window.addEventListener('hashchange', listener)
     return () => {
@@ -14,4 +15,4 @@ function useDebugWatcher() {
   }, [setIsDebug])
 }
 
-export default useDebugWatcher
+export default useDebug

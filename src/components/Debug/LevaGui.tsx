@@ -1,4 +1,4 @@
-import useDebug from '@/stores/debug'
+import useDebug from '@/api/store'
 import { Leva } from 'leva'
 
 function LevaGui() {

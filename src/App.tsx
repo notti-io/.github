@@ -1,11 +1,11 @@
 import { Fragment } from 'react'
 import Experience from '@/components/Experience'
 import LevaGui from '@/components/Debug/LevaGui'
-import useDebugWatcher from '@/hooks/useDebugWatcher'
+import useDebug from '@/hooks/useDebug'
 import '@/App.scss'
 
 function App() {
-  useDebugWatcher()
+  useDebug()
 
   return (
     <Fragment>
