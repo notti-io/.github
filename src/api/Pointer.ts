@@ -28,7 +28,7 @@ class Pointer {
   }
 
   public set(x: number, y: number) {
-    const { innerWidth, innerHeight } = window
+    const { innerWidth, innerHeight } = window || { innerWidth: 0, innerHeight: 0 }
     this.isMoved = true
     this.base.set(x, y)
     this.vector.set((x / innerWidth) * 2 - 1, -(y / innerHeight) * 2 + 1)

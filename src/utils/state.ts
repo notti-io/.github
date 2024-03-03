@@ -1,3 +1,5 @@
 export function getIsDebug() {
-  return import.meta.env.DEV || window.location.hash === '#debug'
+  if (!window) return false
+  if (import.meta.env.DEV) return true
+  return window.location.hash === '#debug'
 }

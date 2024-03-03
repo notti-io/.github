@@ -6,6 +6,8 @@ function useDebug() {
   const setIsDebug = useStore(state => state.setIsDebug)
 
   useEffect(() => {
+    if (!window) return
+
     const listener = () => setIsDebug(getIsDebug())
 
     window.addEventListener('hashchange', listener)
