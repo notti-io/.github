@@ -1,7 +1,8 @@
+import useDebug from '@/stores/debug'
 import { Leva } from 'leva'
 
 function LevaGui() {
-  const isDebug = true
+  const isDebug = useDebug(state => state.isDebug)
 
   return <Leva hideCopyButton collapsed hidden={!isDebug} titleBar={{ title: import.meta.env.VITE_NICK_NAME }} />
 }
