@@ -17,9 +17,7 @@ function Performance() {
   const isDebug = useStore(state => state.isDebug)
   const [state, set] = useControls(...controls.getFn())
 
-  useEffect(() => {
-    set({ monitoring: isDebug })
-  }, [set, isDebug])
+  useEffect(() => set({ monitoring: isDebug }), [set, isDebug])
 
   return (
     <Fragment>
