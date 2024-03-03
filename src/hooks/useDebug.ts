@@ -1,20 +1,14 @@
-import { useEffect } from 'react'
+import { useCallback } from 'react'
 import useStore from '@/api/store'
 import { getIsDebug } from '@/utils/state'
+import { useEventListener } from 'usehooks-ts'
 
 function useDebug() {
   const setIsDebug = useStore(state => state.setIsDebug)
 
-  useEffect(() => {
-    if (!window) return
+  const onHashChange = useCallback(() => setIsDebug(getIsDebug()), [setIsDebug])
 
-    const listener = () => setIsDebug(getIsDebug())
-
-    window.addEventListener('hashchange', listener)
-    return () => {
-      window.removeEventListener('hashchange', listener)
-    }
-  }, [setIsDebug])
+  useEventListener('hashchange', onHashChange)
 }
 
 export default useDebug
