@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from '@/App'
-import { alwaysRedirectTo, disableReactDevToolsIf } from '@/utils/helpers'
+import { alwaysRedirectTo, disableReactDevToolsIf } from '@/utils/other'
 
 disableReactDevToolsIf(import.meta.env.PROD)
 alwaysRedirectTo('/')
