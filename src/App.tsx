@@ -2,12 +2,12 @@ import { Fragment } from 'react'
 import Experience from '@/components/Experience'
 import LevaGui from '@/components/Debug/LevaGui'
 import useDebug from '@/hooks/useDebug'
-import useMouse from '@/hooks/useMouse'
+import usePointer from '@/hooks/usePointer'
 import '@/App.scss'
 
 function App() {
   useDebug()
-  useMouse()
+  usePointer()
 
   return (
     <Fragment>

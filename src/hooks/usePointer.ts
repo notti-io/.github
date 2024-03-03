@@ -3,7 +3,7 @@ import useBoolStore from './useBoolStore'
 import { useCallback } from 'react'
 import { useEventListener } from 'usehooks-ts'
 
-function useMouse() {
+function usePointer() {
   const setIsPointerOut = useStore(state => state.setIsPointerOut)
   const setIsPointerDown = useStore(state => state.setIsPointerDown)
   const setPointerCoords = useStore(state => state.setPointerCoords)
@@ -30,4 +30,4 @@ function useMouse() {
   useEventListener('touchmove', onTouchMove)
 }
 
-export default useMouse
+export default usePointer
