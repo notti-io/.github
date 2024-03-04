@@ -17,6 +17,7 @@ class FalloutMaterial extends Material {
       vertexShader: shaders.vert,
       uniforms: {
         tMap: new Uniform(null),
+        tPos: new Uniform(null),
         uSize: new Uniform(FalloutMaterial.DEFAULT_SIZE),
         uColor: new Uniform(new Color(FalloutMaterial.DEFAULT_COLOR)),
         uAlpha: new Uniform(FalloutMaterial.DEFAULT_ALPHA),
@@ -34,6 +35,13 @@ class FalloutMaterial extends Material {
   }
   set map(v: Texture | null) {
     this.uniforms.tMap.value = v
+  }
+
+  get pos() {
+    return this.uniforms.tPos.value
+  }
+  set pos(v: Texture | null) {
+    this.uniforms.tPos.value = v
   }
 
   get size() {
