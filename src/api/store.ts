@@ -9,6 +9,9 @@ export interface Store {
   accentColor: string
   setAccentColor: (accentColor: string) => void
 
+  isContacts: boolean
+  setIsContacts: (isContacts: boolean) => void
+
   isDebug: boolean
   setIsDebug: (isDebug: boolean) => void
 
@@ -44,6 +47,9 @@ export const initialIsPointerTouch = mediaQuery('(pointer: coarse)')
 const useStore = create<Store>(set => ({
   accentColor: initialAccentColor,
   setAccentColor: accentColor => set({ accentColor }),
+
+  isContacts: false,
+  setIsContacts: isContacts => set({ isContacts }),
 
   isDebug: initialIsDebug,
   setIsDebug: isDebug => set({ isDebug }),
