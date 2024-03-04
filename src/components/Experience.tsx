@@ -3,6 +3,7 @@ import CameraControls from './CameraControls'
 import Performance from './Performance'
 import ShadersProvider from './ShadersProvider'
 import World from './World'
+import PostProcessing from './PostProcessing'
 
 function Experience() {
   return (
@@ -11,6 +12,7 @@ function Experience() {
         <Performance />
         <CameraControls />
         <World />
+        <PostProcessing />
       </ShadersProvider>
     </Canvas>
   )

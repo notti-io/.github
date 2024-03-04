@@ -1,7 +1,7 @@
 import { folder as levaFolder } from 'leva'
 import { Schema } from 'leva/dist/declarations/src/types'
 
-type Folder = 'Performance' | 'Camera' | 'World'
+type Folder = 'Performance' | 'Camera' | 'World' | 'PostProcessing'
 type FolderOrders = Record<Folder, number>
 
 class Controls<S extends Schema> {
@@ -9,6 +9,7 @@ class Controls<S extends Schema> {
     Performance: 0,
     Camera: 1,
     World: 2,
+    PostProcessing: 3,
   }
   private folder: Folder
   private controls: S
