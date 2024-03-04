@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react'
 
-export function useAnimationFrame(cb: (timestamp: number) => void, shouldAnimate = true) {
+function useAnimationFrame(cb: (timestamp: number) => void, shouldAnimate = true) {
   const frame = useRef<number | null>(null)
   const callback = useRef(cb)
 
@@ -28,3 +28,5 @@ export function useAnimationFrame(cb: (timestamp: number) => void, shouldAnimate
     return clear
   }, [shouldAnimate, animate, clear])
 }
+
+export default useAnimationFrame

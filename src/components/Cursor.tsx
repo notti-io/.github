@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useRef } from 'react'
 import useStore from '@/api/store'
-import { useAnimationFrame } from '@/hooks/useAnimationFrame'
+import useAnimationFrame from '@/hooks/useAnimationFrame'
 import { classNames } from '@/utils/helpers'
 
 const dotRadius = 4
