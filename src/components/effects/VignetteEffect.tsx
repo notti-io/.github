@@ -11,7 +11,7 @@ const controls = Controls.folder('PostProcessing', 'Vignette', {
   blendFunction: Controls.select(BlendFunction.NORMAL, BlendFunction),
 })
 
-function Vignette({ enabled }: { enabled: boolean }) {
+function VignetteEffect({ enabled }: { enabled: boolean }) {
   const args = useControls(...controls.get())
 
   if (!enabled) return <Fragment />
@@ -19,4 +19,4 @@ function Vignette({ enabled }: { enabled: boolean }) {
   return <VignetteImpl eskil={args.eskil} offset={args.offset} darkness={args.darkness} blendFunction={args.blendFunction as BlendFunction} />
 }
 
-export default Vignette
+export default VignetteEffect

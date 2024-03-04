@@ -1,7 +1,7 @@
 import { EffectComposer } from '@react-three/postprocessing'
 import { useControls } from 'leva'
 import Controls from '@/api/Controls'
-import Vignette from './effects/Vignette'
+import VignetteEffect from './effects/VignetteEffect'
 
 const folder = 'PostProcessing'
 const schema = () => ({ enabled: Controls.bool(true) })
@@ -16,7 +16,7 @@ function PostProcessing() {
 
   return (
     <EffectComposer enabled={enabled}>
-      <Vignette enabled={vignette.enabled} />
+      <VignetteEffect enabled={vignette.enabled} />
     </EffectComposer>
   )
 }
