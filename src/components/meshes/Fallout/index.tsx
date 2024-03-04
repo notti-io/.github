@@ -4,12 +4,13 @@ import { useControls } from 'leva'
 import type { ColorRepresentation } from 'three'
 import Controls from '@/api/Controls'
 import useStore from '@/api/store'
-import { falloutTexture } from '@/assets/textures'
 import FalloutMaterial from './material'
 import FalloutMaterialImpl from './material/FalloutMaterial'
 import FalloutGeometry from './geometry'
 import FalloutGeometryImpl from './geometry/FalloutGeometry'
 import FalloutSimulation from './geometry/FalloutSimulation'
+
+const falloutTexture = '/textures/fallout.jpg'
 
 export interface FalloutProps extends GroupProps {
   color?: ColorRepresentation

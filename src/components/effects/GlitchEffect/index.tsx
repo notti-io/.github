@@ -5,9 +5,10 @@ import { BlendFunction } from 'postprocessing'
 import { RepeatWrapping } from 'three'
 import Controls from '@/api/Controls'
 import useStore from '@/api/store'
-import { glitchTexture } from '@/assets/textures'
 import useFluid from '@/hooks/useFluid'
 import GlitchEffectImpl from './GlitchEffect'
+
+const glitchTexture = '/textures/glitch.jpg'
 
 const controls = Controls.folder('PostProcessing', 'Glitch', {
   enabled: Controls.bool(true),
