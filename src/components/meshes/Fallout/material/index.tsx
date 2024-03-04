@@ -1,7 +1,7 @@
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import type { ColorRepresentation, Object3D, Texture } from 'three'
-import { default as Ref } from './FalloutMaterial'
+import FalloutMaterialImpl from './FalloutMaterial'
 
 export interface FalloutMaterialProps {
   world?: Object3D | null
@@ -13,7 +13,7 @@ export interface FalloutMaterialProps {
 
 function FalloutMaterial(props: FalloutMaterialProps) {
   const { world, ...restProps } = props
-  const ref = useRef<Ref>(null)
+  const ref = useRef<FalloutMaterialImpl>(null)
 
   useFrame(() => {
     if (!ref.current || !world) return

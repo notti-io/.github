@@ -1,7 +1,6 @@
 import { useFrame, useThree } from '@react-three/fiber'
 import { useRef } from 'react'
-import type { default as Ref } from './FalloutGeometry'
-import './FalloutGeometry'
+import FalloutGeometryImpl from './FalloutGeometry'
 
 export interface FalloutGeometryProps {
   count?: number
@@ -12,7 +11,7 @@ export interface FalloutGeometryProps {
 
 function FalloutGeometry(props: FalloutGeometryProps) {
   const { count, ...restProps } = props
-  const ref = useRef<Ref>(null)
+  const ref = useRef<FalloutGeometryImpl>(null)
   const gl = useThree(state => state.gl)
 
   useFrame(({ gl }) => {

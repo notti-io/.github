@@ -3,7 +3,7 @@ import { useControls } from 'leva'
 import { Fragment } from 'react'
 import Controls from '@/api/Controls'
 import useStore from '@/api/store'
-import { default as GlowEffectImpl } from './GlowEffect'
+import GlowEffectImpl from './GlowEffect'
 
 const controls = Controls.folder('PostProcessing', 'Glow', {
   blendFunction: Controls.select(GlowEffectImpl.DEFAULT_BLEND_FUNCTION, BlendFunction),
