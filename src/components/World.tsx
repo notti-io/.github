@@ -1,8 +1,9 @@
 import { Fragment, useEffect } from 'react'
+import { useControls } from 'leva'
 import Controls from '@/api/Controls'
 import useStore, { initialAccentColor } from '@/api/store'
 import Fog from './meshes/Fog'
-import { useControls } from 'leva'
+import Fallout from './meshes/Fallout'
 
 const controls = Controls.create('World', {
   accentColor: {
@@ -25,6 +26,7 @@ function World() {
       <ambientLight />
       <Fog />
       <group ref={setWorld} name='World'>
+        <Fallout color={accentColor} />
         <mesh>
           <sphereGeometry args={[1, 32, 32]} />
           <meshBasicMaterial color='red' />
