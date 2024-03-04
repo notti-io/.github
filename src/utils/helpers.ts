@@ -1,4 +1,5 @@
 import { DataTexture, FloatType, HalfFloatType, NearestFilter, RGBAFormat, WebGLRenderTarget } from 'three'
+import type { PerspectiveCamera } from 'three'
 
 export function noop() {}
 
@@ -52,4 +53,15 @@ export function createRenderTarget(size: number) {
     format: RGBAFormat,
     type: getFloatType(),
   })
+}
+
+export function calculateScreenSize(camera: PerspectiveCamera, cameraDistance: number, desktopRatio = 0.6, mobileRatio = 0.84) {
+  const fovY = cameraDistance * Math.tan((camera.fov * Math.PI) / 180 / 2) * 2
+  let width = fovY * camera.aspect
+  let height = fovY
+  let ratio = desktopRatio
+  if (width < height) ratio = mobileRatio
+  width *= ratio
+  height *= ratio
+  return { width, height }
 }

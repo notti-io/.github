@@ -4,6 +4,7 @@ import Controls from '@/api/Controls'
 import useStore, { initialAccentColor } from '@/api/store'
 import Fog from './meshes/Fog'
 import Fallout from './meshes/Fallout'
+import Hero from './meshes/Hero'
 
 const controls = Controls.create('World', {
   accentColor: {
@@ -27,10 +28,7 @@ function World() {
       <Fog />
       <group ref={setWorld} name='World'>
         <Fallout color={accentColor} />
-        <mesh>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial color='red' />
-        </mesh>
+        <Hero color={accentColor} />
       </group>
     </Fragment>
   )
