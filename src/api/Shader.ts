@@ -1,6 +1,7 @@
-import { Uniform } from 'three'
+import { Uniform, Vector2 } from 'three'
 import type { IUniform } from 'three'
 import shaderUtils from '@/utils/shader'
+import { Size } from '@react-three/fiber'
 
 export type MaterialUniforms = Record<string, IUniform>
 export type EffectUniforms = Map<string, Uniform>
@@ -8,11 +9,13 @@ export type EffectUniforms = Map<string, Uniform>
 class Shader {
   private static readonly SHARED_UNIFORMS = {
     time: new Uniform(0),
+    resolution: new Uniform(new Vector2(window.innerWidth, window.innerHeight)),
     DPR: new Uniform(window.devicePixelRatio),
   }
 
-  public static updateSharedUniforms(time: number, DPR?: number) {
+  public static updateSharedUniforms(time: number, size: Size, DPR?: number) {
     Shader.SHARED_UNIFORMS.time.value = time
+    Shader.SHARED_UNIFORMS.resolution.value.set(size.width, size.height)
     Shader.SHARED_UNIFORMS.DPR.value = DPR ?? window.devicePixelRatio
   }
 

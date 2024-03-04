@@ -1,6 +1,6 @@
 import { Effect as EffectImpl } from 'postprocessing'
 import type { BlendFunction, EffectAttribute, WebGLExtension } from 'postprocessing'
-import type { Uniform } from 'three'
+import type { Uniform, Vector2 } from 'three'
 import Shader from './Shader'
 
 export interface EffectCoreOptions {
@@ -27,6 +27,13 @@ class Effect extends EffectImpl {
   }
   set time(v: number) {
     this.uniforms.get('time')!.value = v
+  }
+
+  get resolution() {
+    return this.uniforms.get('resolution')!.value
+  }
+  set resolution(v: Vector2) {
+    this.uniforms.get('resolution')!.value.copy(v)
   }
 
   get DPR() {

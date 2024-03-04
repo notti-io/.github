@@ -1,5 +1,5 @@
 import { ShaderMaterial } from 'three'
-import type { ShaderMaterialParameters } from 'three'
+import type { ShaderMaterialParameters, Vector2 } from 'three'
 import Shader from './Shader'
 
 class Material extends ShaderMaterial {
@@ -12,6 +12,13 @@ class Material extends ShaderMaterial {
   }
   set time(v: number) {
     this.uniforms.time.value = v
+  }
+
+  get resolution() {
+    return this.uniforms.resolution.value
+  }
+  set resolution(v: Vector2) {
+    this.uniforms.resolution.value.copy(v)
   }
 
   get DPR() {
