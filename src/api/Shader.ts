@@ -25,6 +25,7 @@ class Shader {
       let type: string | null = null
       if (typeof value.value === 'number') type = 'float'
       if (typeof value.value === 'boolean') type = 'bool'
+      if (value.value instanceof Vector2) type = 'vec2'
       const uniform = `uniform ${type} ${key};`
       if (!shader.includes(uniform)) {
         shader = `${uniform}\n${shader}`
