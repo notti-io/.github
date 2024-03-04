@@ -13,7 +13,7 @@ export interface FalloutMaterialProps {
 }
 
 function FalloutMaterial(props: FalloutMaterialProps) {
-  const { world, map, size, color, alpha } = props
+  const { world, ...restProps } = props
   const ref = useRef<Ref>(null)
 
   useFrame(() => {
@@ -21,7 +21,7 @@ function FalloutMaterial(props: FalloutMaterialProps) {
     ref.current.rotation = world.rotation.z
   })
 
-  return <falloutMaterial ref={ref} map={map} size={size} color={color} alpha={alpha} />
+  return <falloutMaterial ref={ref} {...restProps} />
 }
 
 export default FalloutMaterial
