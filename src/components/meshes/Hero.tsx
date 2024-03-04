@@ -11,13 +11,13 @@ export interface HeroProps extends GroupProps {
 }
 
 function Hero(props: HeroProps) {
-  const { name = 'Hero', ...restProps } = props
+  const { color, name = 'Hero', ...restProps } = props
   const { width, height } = useThree(state => calculateScreenSize(state.camera as PerspectiveCamera, 6))
   const floorY = useMemo(() => -height / 2 - 0.2, [height])
 
   return (
     <group name={name} {...restProps}>
-      <Screen position={[0, 0, -3]} width={width} height={height} />
+      <Screen position={[0, 0, -3]} width={width} height={height} color={color} />
       <Floor position={[0, floorY, 0]} />
     </group>
   )

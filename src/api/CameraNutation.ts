@@ -54,7 +54,7 @@ class CameraNutation {
     this.enabled = options.enabled ?? true
     this.world = options.world
     this.position = options.position ?? new Vector3(0, 0, 5)
-    this.lookAt = options.lookAt ?? new Vector3()
+    this.lookAt = options.lookAt ?? new Vector3(0, 0, -3)
     this.pointer = new Vector2()
     this.strength = options.strength ?? 1
     this.movement = {
