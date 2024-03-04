@@ -3,6 +3,7 @@ import { create } from 'zustand'
 import { mediaQuery } from '@/utils/helpers'
 import { getAccentColor, getIsDebug } from '@/utils/state'
 import Pointer from './Pointer'
+import FluidEffect from '@/components/effects/FluidEffect/FluidEffect'
 
 export interface Store {
   accentColor: string
@@ -31,6 +32,9 @@ export interface Store {
 
   screen: Mesh | null
   setScreen: (screen: Mesh | null) => void
+
+  fluid: FluidEffect | null
+  setFluid: (fluid: FluidEffect | null) => void
 }
 
 export const initialAccentColor = getAccentColor()
@@ -68,6 +72,9 @@ const useStore = create<Store>(set => ({
 
   screen: null,
   setScreen: screen => set({ screen }),
+
+  fluid: null,
+  setFluid: fluid => set({ fluid }),
 }))
 
 export default useStore

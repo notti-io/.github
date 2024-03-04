@@ -1,9 +1,9 @@
 import { useControls } from 'leva'
-import { Fragment, useRef } from 'react'
+import { Fragment } from 'react'
 import { BlendFunction } from 'postprocessing'
 import Controls from '@/api/Controls'
 import useStore from '@/api/store'
-import { default as Ref } from './FluidEffect'
+import FluidEffectImpl from './FluidEffect'
 import FluidSimulation from './FluidSimulation'
 import FluidMouse from './FluidMouse'
 
@@ -18,19 +18,19 @@ const controls = Controls.folder('PostProcessing', 'Fluid', {
   isAdditive: Controls.bool(FluidSimulation.DEFAULT_IS_ADDITIVE),
   scaleBasedOnVelocity: Controls.bool(FluidMouse.DEFAULT_SCALE_BASED_ON_VELOCITY),
   scale: Controls.num(FluidMouse.DEFAULT_SCALE, 0, 10),
-  blendFunction: Controls.select(Ref.DEFAULT_BLEND_FUNCTION, BlendFunction),
+  blendFunction: Controls.select(FluidEffectImpl.DEFAULT_BLEND_FUNCTION, BlendFunction),
 })
 
 function FluidEffect({ enabled }: { enabled: boolean }) {
-  const ref = useRef<Ref>(null)
   const args = useControls(...controls.get())
   const pointer = useStore(state => state.pointer)
+  const setFluid = useStore(state => state.setFluid)
 
   if (!enabled) return <Fragment />
 
   return (
     <fluidEffect
-      ref={ref}
+      ref={setFluid}
       args={[pointer, args.blendFunction as BlendFunction]}
       densityDissipation={args.densityDissipation}
       velocityDissipation={args.velocityDissipation}
