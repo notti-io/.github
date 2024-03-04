@@ -1,7 +1,8 @@
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import type { ColorRepresentation, Object3D, Texture } from 'three'
-import { default as Ref } from './FalloutMaterial'
+import type { default as Ref } from './FalloutMaterial'
+import './FalloutMaterial'
 
 export interface FalloutMaterialProps {
   world?: Object3D | null
