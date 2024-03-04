@@ -1,4 +1,4 @@
-import type { Object3D } from 'three'
+import type { Mesh, Object3D } from 'three'
 import { create } from 'zustand'
 import { mediaQuery } from '@/utils/helpers'
 import { getAccentColor, getIsDebug } from '@/utils/state'
@@ -28,6 +28,9 @@ export interface Store {
 
   world: Object3D | null
   setWorld: (world: Object3D | null) => void
+
+  screen: Mesh | null
+  setScreen: (screen: Mesh | null) => void
 }
 
 export const initialAccentColor = getAccentColor()
@@ -62,6 +65,9 @@ const useStore = create<Store>(set => ({
 
   world: null,
   setWorld: world => set({ world }),
+
+  screen: null,
+  setScreen: screen => set({ screen }),
 }))
 
 export default useStore

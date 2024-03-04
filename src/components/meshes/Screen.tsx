@@ -2,6 +2,7 @@ import type { GroupProps } from '@react-three/fiber'
 import { useControls } from 'leva'
 import type { ColorRepresentation } from 'three'
 import Controls from '@/api/Controls'
+import useStore from '@/api/store'
 
 export interface ScreenProps extends GroupProps {
   width: number
@@ -16,10 +17,11 @@ const controls = Controls.folder('World', 'Screen', {
 function Screen(props: ScreenProps) {
   const { color, width, height, name = 'Screen', ...restProps } = props
   const args = useControls(...controls.get())
+  const setScreen = useStore(state => state.setScreen)
 
   return (
     <group name={name} {...restProps}>
-      <mesh scale={[width, height, 1]}>
+      <mesh ref={setScreen} scale={[width, height, 1]}>
         <planeGeometry args={[1, 1]} />
         <meshBasicMaterial color={color} />
       </mesh>
