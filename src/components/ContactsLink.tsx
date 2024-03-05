@@ -14,13 +14,14 @@ export interface ContactsLinkProps {
 
 function ContactsLink(props: ContactsLinkProps) {
   const { open, title, href, icon, delay, duration } = props
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLAnchorElement>(null)
 
   useCursor(`contacts-socials-link-${title}`, ref, icon)
 
   return (
-    <div ref={ref} className='contacts-socials-link-wrapper'>
+    <div className='contacts-socials-link-wrapper'>
       <motion.a
+        ref={ref}
         href={href}
         target='_blank'
         rel='noreferrer'
