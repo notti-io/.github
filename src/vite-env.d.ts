@@ -12,7 +12,11 @@ interface ImportMetaEnv {
 
   readonly VITE_SITE_URL: string
   readonly VITE_EMAIL: string
+  readonly VITE_LINKEDIN_HANDLE: string
+  readonly VITE_GITHUB_HANDLE: string
+  readonly VITE_TELEGRAM_HANDLE: string
   readonly VITE_TWITTER_HANDLE: string
+  readonly VITE_RESUME_FILE_NAME: string
 }
 
 interface ImportMeta {

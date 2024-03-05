@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import ThemeSwitcher from './ThemeSwitcher'
 import Clock from './Clock'
+import ContactsButton from './ContactsButton'
 
 function Navbar() {
   return (
@@ -13,7 +14,7 @@ function Navbar() {
           <Clock />
         </div>
         <div className='navbar-item'>
-          <div className='navbar-text'>Contacts</div>
+          <ContactsButton />
         </div>
       </div>
       <ThemeSwitcher />
