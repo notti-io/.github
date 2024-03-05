@@ -1,5 +1,5 @@
-import useStore from '@/api/store'
 import { AnimatePresence, motion } from 'framer-motion'
+import useStore from '@/api/store'
 import Contacts from './Contacts'
 
 function Content() {

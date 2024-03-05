@@ -1,7 +1,8 @@
+import gsap from 'gsap'
 import { useCallback, useRef } from 'react'
 import useStore from '@/api/store'
+import { useCursor } from '@/hooks/useCursor'
 import { hslToHex, random } from '@/utils/helpers'
-import gsap from 'gsap'
 
 function randomHexColor() {
   const hue = random(0, 360)
@@ -9,23 +10,26 @@ function randomHexColor() {
 }
 
 function ThemeSwitcher() {
+  const ref = useRef<HTMLButtonElement>(null)
   const accentColor = useStore(state => state.accentColor)
   const setAccentColor = useStore(state => state.setAccentColor)
-  const ref = useRef(accentColor)
+  const color = useRef(accentColor)
 
   const onClick = useCallback(() => {
-    gsap.to(ref, {
+    gsap.to(color, {
       current: randomHexColor(),
       ease: 'sine.inOut',
       duration: 1,
       onUpdate: () => {
-        setAccentColor(ref.current)
+        setAccentColor(color.current)
       },
     })
   }, [setAccentColor])
 
+  useCursor('theme-switcher', ref)
+
   return (
-    <button className='theme-switcher' onClick={onClick}>
+    <button ref={ref} className='theme-switcher' onClick={onClick}>
       <span className='theme-switcher-circle' />
       <span className='theme-switcher-aura' />
     </button>

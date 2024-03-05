@@ -24,8 +24,9 @@ export interface Store {
   isPointerDown: boolean
   setIsPointerDown: (isPointerDown: boolean) => void
 
+  isHoveringId: string | null
   isHovering: boolean
-  setIsHovering: (isHovering: boolean) => void
+  setIsHovering: (id: string, isHovering: boolean) => void
 
   pointer: Pointer
   setPointerCoords: (x: number, y: number) => void
@@ -66,8 +67,13 @@ const useStore = create<Store>(set => ({
   isPointerDown: false,
   setIsPointerDown: isPointerDown => set({ isPointerDown }),
 
+  isHoveringId: null,
   isHovering: false,
-  setIsHovering: isHovering => set({ isHovering }),
+  setIsHovering: (id, isHovering) =>
+    set(state => {
+      if (!isHovering && state.isHoveringId && state.isHoveringId !== id) return state
+      return { isHoveringId: isHovering ? id : null, isHovering }
+    }),
 
   pointer: new Pointer(),
   setPointerCoords: (x, y) =>
