@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import ThemeSwitcher from './ThemeSwitcher'
 import Clock from './Clock'
-import ContactsButton from './ContactsButton'
+import ContactsButton from '../Contacts/ContactsButton'
 
 function Navbar() {
   return (

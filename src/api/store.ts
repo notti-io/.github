@@ -1,7 +1,7 @@
 import type { Mesh, Object3D } from 'three'
 import { create } from 'zustand'
 import { Icon } from '@/assets'
-import FluidEffect from '@/components/effects/FluidEffect/FluidEffect'
+import FluidEffect from '@/components/PostProcessing/effects/FluidEffect/FluidEffect'
 import { mediaQuery } from '@/utils/helpers'
 import { getAccentColor, getIsDebug, setAccentColor } from '@/utils/state'
 import Pointer from './Pointer'
