@@ -17,7 +17,7 @@ function Clock() {
     setDate(convertDateTZ(new Date(), import.meta.env.VITE_TIME_ZONE))
   }, 1000)
 
-  return <div className='navbar-text'>{`${import.meta.env.VITE_CITY} (${time})`}</div>
+  return <div className='navbar-text'>{`${import.meta.env.VITE_CITY} • ${time}`}</div>
 }
 
 export default Clock
