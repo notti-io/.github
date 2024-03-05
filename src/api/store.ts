@@ -1,9 +1,10 @@
 import type { Mesh, Object3D } from 'three'
 import { create } from 'zustand'
+import { Icon } from '@/assets'
+import FluidEffect from '@/components/effects/FluidEffect/FluidEffect'
 import { mediaQuery } from '@/utils/helpers'
 import { getAccentColor, getIsDebug, setAccentColor } from '@/utils/state'
 import Pointer from './Pointer'
-import FluidEffect from '@/components/effects/FluidEffect/FluidEffect'
 
 export interface Store {
   accentColor: string
@@ -26,7 +27,8 @@ export interface Store {
 
   isHoveringId: string | null
   isHovering: boolean
-  setIsHovering: (id: string, isHovering: boolean) => void
+  isHoveringIcon: Icon | null
+  setIsHovering: (id: string, isHovering: boolean, icon?: Icon) => void
 
   pointer: Pointer
   setPointerCoords: (x: number, y: number) => void
@@ -69,10 +71,16 @@ const useStore = create<Store>(set => ({
 
   isHoveringId: null,
   isHovering: false,
-  setIsHovering: (id, isHovering) =>
+  isHoveringIcon: null,
+  setIsHovering: (id, isHovering, icon) =>
     set(state => {
       if (!isHovering && state.isHoveringId && state.isHoveringId !== id) return state
-      return { isHoveringId: isHovering ? id : null, isHovering }
+      state.isHoveringId = isHovering ? id : null
+      state.isHovering = isHovering
+      if (icon) {
+        state.isHoveringIcon = isHovering ? icon : null
+      }
+      return state
     }),
 
   pointer: new Pointer(),

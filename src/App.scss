@@ -84,7 +84,6 @@ body {
   &-dot,
   &-aura-container,
   &-aura-container &-aura,
-  &-magnet-aura,
   &-icon-aura,
   &-icon-aura &-icon-container,
   &-icon-aura &-icon-wrapper {
@@ -103,7 +102,6 @@ body {
 
   &-dot,
   &-aura-container,
-  &-magnet-aura,
   &-icon-aura {
     position: fixed;
     transition: opacity var(--transition), transform var(--transition);
@@ -123,12 +121,6 @@ body {
       background-color: rgba(white, 0.2);
       transition: background-color var(--transition);
     }
-  }
-
-  &-magnet-aura {
-    background-color: rgba(white, 0.2);
-    opacity: 0;
-    transform: scale(0);
   }
 
   &-icon-aura {
@@ -153,7 +145,6 @@ body {
   &-out {
     .cursor-dot,
     .cursor-aura-container,
-    .cursor-magnet-aura,
     .cursor-icon-aura {
       opacity: 0 !important;
       transform: scale(0) !important;
@@ -186,23 +177,6 @@ body {
       background-color: rgba(white, 0);
       border: 1px solid white;
       animation: pulse 1s linear infinite;
-    }
-  }
-
-  &-magnet {
-    .cursor-dot,
-    .cursor-aura-container {
-      opacity: 0;
-      transform: scale(0);
-    }
-    .cursor-magnet-aura {
-      opacity: 1;
-      transform: scale(1);
-    }
-    &.cursor-down {
-      .cursor-magnet-aura {
-        transform: scale(0.8);
-      }
     }
   }
 

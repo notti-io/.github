@@ -1,18 +1,25 @@
+import { Icon } from '@/assets'
+import { useCursor } from '@/hooks/useCursor'
 import { motion } from 'framer-motion'
+import { useRef } from 'react'
 
 export interface ContactsLinkProps {
   open: boolean
   title: string
   href: string
+  icon: Icon
   delay: number
   duration: number
 }
 
 function ContactsLink(props: ContactsLinkProps) {
-  const { open, title, href, delay, duration } = props
+  const { open, title, href, icon, delay, duration } = props
+  const ref = useRef<HTMLDivElement>(null)
+
+  useCursor(`contacts-socials-link-${title}`, ref, icon)
 
   return (
-    <div className='contacts-socials-link-wrapper'>
+    <div ref={ref} className='contacts-socials-link-wrapper'>
       <motion.a
         href={href}
         target='_blank'
