@@ -65,3 +65,16 @@ export function calculateScreenSize(camera: PerspectiveCamera, cameraDistance: n
   height *= ratio
   return { width, height }
 }
+
+export function hslToHex(hue: number, saturation: number, lightness: number) {
+  const l = lightness / 100
+  const a = (saturation * Math.min(l, 1 - l)) / 100
+  const f = (n: number) => {
+    const k = (n + hue / 30) % 12
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)
+    return Math.round(255 * color)
+      .toString(16)
+      .padStart(2, '0')
+  }
+  return `#${f(0)}${f(8)}${f(4)}`
+}
