@@ -1,6 +1,6 @@
 import { OrbitControls } from '@react-three/drei'
 import { useControls } from 'leva'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import CameraNutation from '@/api/CameraNutation'
 import Controls from '@/api/Controls'
 import useStore from '@/api/store'
@@ -22,14 +22,12 @@ function CameraControls() {
   const config = useControls(...nutationControls.get())
   const world = useStore(state => state.world)
   const isPointerTouch = useStore(state => state.isPointerTouch)
-  const isPointerOut = useStore(state => state.isPointerOut)
   const pointer = useStore(state => state.pointer)
-  const strength = useMemo(() => Number(!isPointerTouch && !isPointerOut), [isPointerTouch, isPointerOut])
   const nutation = useRef(
     new CameraNutation({
       enabled: !isOrbitControls,
       world,
-      strength,
+      strength: Number(!isPointerTouch),
       config,
     }),
   )
@@ -37,7 +35,7 @@ function CameraControls() {
   useEffect(() => nutation.current.setEnabled(!isOrbitControls), [isOrbitControls])
   useEffect(() => nutation.current.setWorld(world), [world])
   useEffect(() => nutation.current.setConfig(config), [config])
-  useEffect(() => nutation.current.translateStrength(strength), [strength])
+  useEffect(() => nutation.current.translateStrength(Number(!isPointerTouch)), [isPointerTouch])
   useFrame(({ camera, size }) => nutation.current.frame(camera, size, pointer))
 
   return <OrbitControls enableDamping enabled={isOrbitControls} />
