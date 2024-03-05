@@ -8,6 +8,7 @@ interface ImportMetaEnv {
   readonly VITE_DESCRIPTION: string
   readonly VITE_COUNTRY: string
   readonly VITE_CITY: string
+  readonly VITE_TIME_ZONE: string
 
   readonly VITE_SITE_URL: string
   readonly VITE_EMAIL: string

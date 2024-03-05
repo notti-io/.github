@@ -78,3 +78,7 @@ export function hslToHex(hue: number, saturation: number, lightness: number) {
   }
   return `#${f(0)}${f(8)}${f(4)}`
 }
+
+export function convertDateTZ(date: Date, timeZone: string) {
+  return new Date(date.toLocaleString('en-US', { timeZone }))
+}

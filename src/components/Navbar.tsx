@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import ThemeSwitcher from './ThemeSwitcher'
+import Clock from './Clock'
 
 function Navbar() {
   return (
@@ -9,7 +10,9 @@ function Navbar() {
           <div className='navbar-text'>{import.meta.env.VITE_NICK_NAME}</div>
         </div>
         <div className='navbar-item'>
-          <div className='navbar-text'>{import.meta.env.VITE_CITY} (11:26)</div>
+          <Clock timeZone={import.meta.env.VITE_TIME_ZONE}>
+            {time => <div className='navbar-text'>{`${import.meta.env.VITE_CITY} (${time})`}</div>}
+          </Clock>
         </div>
         <div className='navbar-item'>
           <div className='navbar-text'>Contacts</div>
