@@ -1,7 +1,7 @@
 import type { Mesh, Object3D } from 'three'
 import { create } from 'zustand'
 import { mediaQuery } from '@/utils/helpers'
-import { getAccentColor, getIsDebug } from '@/utils/state'
+import { getAccentColor, getIsDebug, setAccentColor } from '@/utils/state'
 import Pointer from './Pointer'
 import FluidEffect from '@/components/effects/FluidEffect/FluidEffect'
 
@@ -46,7 +46,10 @@ export const initialIsPointerTouch = mediaQuery('(pointer: coarse)')
 
 const useStore = create<Store>(set => ({
   accentColor: initialAccentColor,
-  setAccentColor: accentColor => set({ accentColor }),
+  setAccentColor: accentColor => {
+    set({ accentColor })
+    setAccentColor(accentColor)
+  },
 
   isContacts: false,
   setIsContacts: isContacts => set({ isContacts }),
