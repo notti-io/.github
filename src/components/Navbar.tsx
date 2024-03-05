@@ -10,9 +10,7 @@ function Navbar() {
           <div className='navbar-text'>{import.meta.env.VITE_NICK_NAME}</div>
         </div>
         <div className='navbar-item'>
-          <Clock timeZone={import.meta.env.VITE_TIME_ZONE}>
-            {time => <div className='navbar-text'>{`${import.meta.env.VITE_CITY} (${time})`}</div>}
-          </Clock>
+          <Clock />
         </div>
         <div className='navbar-item'>
           <div className='navbar-text'>Contacts</div>

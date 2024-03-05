@@ -1,15 +1,9 @@
 import { convertDateTZ } from '@/utils/helpers'
 import { useMemo, useState } from 'react'
-import type { ReactNode } from 'react'
 import { useInterval } from 'usehooks-ts'
 
-export interface ClockProps {
-  timeZone: string
-  children: (time: string) => ReactNode
-}
-
-function Clock({ timeZone, children }: ClockProps) {
-  const [date, setDate] = useState(convertDateTZ(new Date(), timeZone))
+function Clock() {
+  const [date, setDate] = useState(convertDateTZ(new Date(), import.meta.env.VITE_TIME_ZONE))
   const time = useMemo(() => {
     const hours = date.getHours()
     const minutes = date.getMinutes()
@@ -20,10 +14,10 @@ function Clock({ timeZone, children }: ClockProps) {
   }, [date])
 
   useInterval(() => {
-    setDate(convertDateTZ(new Date(), timeZone))
+    setDate(convertDateTZ(new Date(), import.meta.env.VITE_TIME_ZONE))
   }, 1000)
 
-  return children(time)
+  return <div className='navbar-text'>{`${import.meta.env.VITE_CITY} (${time})`}</div>
 }
 
 export default Clock
