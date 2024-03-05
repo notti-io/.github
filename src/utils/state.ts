@@ -1,10 +1,10 @@
-import { isValidHex, randomHexColor } from './helpers'
+import { isValidHex } from './helpers'
 
 export function getAccentColor() {
-  if (!localStorage) return randomHexColor()
+  if (!localStorage) return '#5d00ff'
   const localStorageItem = localStorage.getItem('accent-color')
-  if (!localStorageItem) return randomHexColor()
-  if (!isValidHex(localStorageItem)) return randomHexColor()
+  if (!localStorageItem) return '#5d00ff'
+  if (!isValidHex(localStorageItem)) return '#5d00ff'
   return localStorageItem
 }
 
