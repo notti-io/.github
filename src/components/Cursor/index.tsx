@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import useStore from '@/api/store'
 import useAnimationFrame from '@/hooks/useAnimationFrame'
@@ -84,7 +85,7 @@ function Cursor() {
         <div ref={auraRef} className='cursor-aura' />
       </div>
       <div ref={iconRef} className='cursor-icon-aura'>
-        {bufferIcon && <CursorIcon icon={bufferIcon} size={iconDiameter} />}
+        <AnimatePresence>{bufferIcon && <CursorIcon icon={bufferIcon} size={iconDiameter} />}</AnimatePresence>
       </div>
     </div>
   )

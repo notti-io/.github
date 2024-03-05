@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { EmailIcon, GitHubIcon, Icon, LinkedInIcon, ResumeIcon, TelegramIcon, XIcon } from '@/assets'
 import { useMemo } from 'react'
 
@@ -27,23 +27,20 @@ function CursorIcon({ icon, size }: CursorIconProps) {
 
   return (
     <div className='cursor-icon-wrapper' style={{ width: size, height: size }}>
-      <AnimatePresence>
-        <motion.div
-          key={icon}
-          className='cursor-icon-container'
-          variants={{
-            base: { x: '-50%', y: '-50%' },
-            visible: { scale: 1, opacity: 1 },
-            hidden: { scale: 0, opacity: 0 },
-          }}
-          initial={['base', 'hidden']}
-          animate={['base', 'visible']}
-          exit={['base', 'hidden']}
-          transition={{ ease: [0.25, 1, 0.5, 1], duration: 0.6 }}
-        >
-          <Icon />
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        className='cursor-icon-container'
+        variants={{
+          base: { x: '-50%', y: '-50%' },
+          visible: { scale: 1, opacity: 1 },
+          hidden: { scale: 0, opacity: 0 },
+        }}
+        initial={['base', 'hidden']}
+        animate={['base', 'visible']}
+        exit={['base', 'hidden']}
+        transition={{ ease: [0.25, 1, 0.5, 1], duration: 0.6 }}
+      >
+        <Icon />
+      </motion.div>
     </div>
   )
 }
