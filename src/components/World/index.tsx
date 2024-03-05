@@ -2,9 +2,9 @@ import { Fragment, useEffect } from 'react'
 import { useControls } from 'leva'
 import Controls from '@/api/Controls'
 import useStore, { initialAccentColor } from '@/api/store'
-import Fog from './meshes/Fog'
-import Fallout from './meshes/Fallout'
-import Hero from './meshes/Hero'
+import Fog from './Fog'
+import Fallout from './Fallout'
+import Hero from './Hero'
 
 const controls = Controls.create('World', {
   accentColor: {
