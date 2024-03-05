@@ -320,28 +320,20 @@ body {
   }
 }
 
-.content {
+.contacts {
   z-index: 2;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  mix-blend-mode: difference;
-}
-
-.contacts {
-  position: relative;
   width: 100%;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
+  mix-blend-mode: difference;
   @media (max-width: 767.98px) {
     align-items: flex-end;
   }

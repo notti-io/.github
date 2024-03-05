@@ -1,3 +1,4 @@
+import useStore from '@/api/store'
 import ContactsLink from './ContactsLink'
 
 const contacts = [
@@ -10,11 +11,20 @@ const contacts = [
 ]
 
 function Contacts() {
+  const open = useStore(state => state.isContacts)
+
   return (
     <div className='contacts'>
       <div className='contacts-socials'>
         {contacts.map((link, index) => (
-          <ContactsLink key={link.title} title={link.title} href={link.href} delay={(index + 1) * 0.05 + 0.4} duration={0.7 + index * 0.1} />
+          <ContactsLink
+            key={link.title}
+            open={open}
+            title={link.title}
+            href={link.href}
+            delay={(index + 1) * 0.05 + 0.4}
+            duration={0.7 + index * 0.1}
+          />
         ))}
       </div>
     </div>
