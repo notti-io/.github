@@ -25,8 +25,7 @@ function ThemeSwitcher() {
   }, [setAccentColor])
 
   return (
-    <button className='theme-switcher' tabIndex={2} onClick={onClick}>
-      <span className='sr-only'>Switch theme</span>
+    <button className='theme-switcher' onClick={onClick}>
       <span className='theme-switcher-circle' />
       <span className='theme-switcher-aura' />
     </button>
