@@ -16,6 +16,8 @@ export function setAccentColor(color: string) {
 
 export function getIsDebug() {
   if (!window) return false
-  if (import.meta.env.DEV) return true
+  if (import.meta.env.DEV) {
+    return window.location.hash !== '#debug'
+  }
   return window.location.hash === '#debug'
 }
