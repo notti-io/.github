@@ -82,3 +82,8 @@ export function hslToHex(hue: number, saturation: number, lightness: number) {
 export function convertDateTZ(date: Date, timeZone: string) {
   return new Date(date.toLocaleString('en-US', { timeZone }))
 }
+
+export function randomHexColor() {
+  const hue = random(0, 360)
+  return hslToHex(hue, 100, 50)
+}

@@ -2,12 +2,7 @@ import gsap from 'gsap'
 import { useCallback, useRef } from 'react'
 import useStore from '@/api/store'
 import { useCursor } from '@/hooks/useCursor'
-import { hslToHex, random } from '@/utils/helpers'
-
-function randomHexColor() {
-  const hue = random(0, 360)
-  return hslToHex(hue, 100, 50)
-}
+import { randomHexColor } from '@/utils/helpers'
 
 function ThemeSwitcher() {
   const ref = useRef<HTMLButtonElement>(null)
