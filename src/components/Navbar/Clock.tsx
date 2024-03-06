@@ -13,9 +13,7 @@ function Clock() {
     return `${hoursString}:${minutesString}`
   }, [date])
 
-  useInterval(() => {
-    setDate(convertDateTZ(new Date(), import.meta.env.VITE_TIME_ZONE))
-  }, 1000)
+  useInterval(() => setDate(convertDateTZ(new Date(), import.meta.env.VITE_TIME_ZONE)), 1000)
 
   return <div className='navbar-text'>{`${import.meta.env.VITE_CITY} • ${time}`}</div>
 }

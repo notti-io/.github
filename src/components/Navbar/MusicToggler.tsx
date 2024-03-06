@@ -7,9 +7,7 @@ function MusicToggler() {
   const musicPlaying = useStore(state => state.musicPlaying)
   const setMusicPlaying = useStore(state => state.setMusicPlaying)
 
-  const onClick = useCallback(() => {
-    setMusicPlaying(!musicPlaying)
-  }, [setMusicPlaying, musicPlaying])
+  const onClick = useCallback(() => setMusicPlaying(!musicPlaying), [setMusicPlaying, musicPlaying])
 
   return (
     <NavbarButton id='music-toggler' side='left' onClick={onClick}>

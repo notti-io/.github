@@ -5,9 +5,7 @@ import { useClickAnyWhere } from 'usehooks-ts'
 function useInitMusic() {
   const setMusicReady = useStore(state => state.setMusicReady)
 
-  const onClickAnywhere = useCallback(() => {
-    setMusicReady(true)
-  }, [setMusicReady])
+  const onClickAnywhere = useCallback(() => setMusicReady(true), [setMusicReady])
 
   useClickAnyWhere(onClickAnywhere)
 }

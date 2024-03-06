@@ -71,9 +71,7 @@ function AudioAnalyser({ buffer }: { buffer: AudioBuffer }) {
   useEffect(() => subscribeEnd(playNextMusic), [subscribeEnd, playNextMusic])
   useEffect(() => setPlaying(musicPlaying), [setPlaying, musicPlaying])
 
-  useFrame(() => {
-    Shader.updateAudioFrequency(updateData())
-  })
+  useFrame(() => Shader.updateAudioFrequency(updateData()))
 
   return null
 }

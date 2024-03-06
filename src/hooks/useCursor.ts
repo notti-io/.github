@@ -8,10 +8,7 @@ export function useCursor<T extends HTMLElement = HTMLElement>(id: string, eleme
   const setIsHovering = useStore(state => state.setIsHovering)
   const hovered = useHover(elementRef)
 
-  useLayoutEffect(() => {
-    setIsHovering(id, hovered, icon)
-  }, [setIsHovering, id, icon, hovered])
-
+  useLayoutEffect(() => setIsHovering(id, hovered, icon), [setIsHovering, id, icon, hovered])
   useEffect(() => {
     return () => {
       setIsHovering(id, false)
