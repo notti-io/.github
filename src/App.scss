@@ -4,7 +4,6 @@
   --transition: var(--duration) var(--easing);
   --staff-x: 'StaffX', sans-serif;
   --ubuntu: 'Ubuntu Mono', sans-serif;
-  --montserrat: 'Montserrat', sans-serif;
 }
 
 * {
@@ -33,9 +32,15 @@ body {
   overflow: hidden;
 }
 
+html {
+  font-size: 16px;
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+}
+
 body {
   text-size-adjust: 100%;
-  font-size: 16px;
   color: white;
   font-family: var(--ubuntu);
   -webkit-font-smoothing: antialiased;
@@ -45,9 +50,6 @@ body {
   line-height: 1;
   font-weight: normal;
   background-color: #454545;
-  @media (max-width: 768px) {
-    font-size: 15px;
-  }
 }
 
 #experience {
@@ -432,6 +434,47 @@ body {
           transform: skewX(-10deg);
         }
       }
+    }
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.music-controls {
+  z-index: 4;
+  position: fixed;
+  left: 50%;
+  bottom: 0.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: difference;
+  &-text {
+    $sideOffset: 0.5rem;
+    $buttonSize: 2.5rem;
+    width: calc(320px - (#{$buttonSize * 4} + #{$sideOffset * 6}));
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 #{$sideOffset};
+    &-line {
+      flex-shrink: 0;
+      white-space: nowrap;
+      text-transform: uppercase;
+      color: white;
+      background: linear-gradient(45deg, #fff 20%, #a7a6a6 40%, #a7a6a6 60%, #fff 80%);
+      background-size: 200% auto;
+      color: #000;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
     }
   }
 }

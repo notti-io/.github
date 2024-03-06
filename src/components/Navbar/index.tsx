@@ -1,8 +1,9 @@
 import { Fragment } from 'react'
 import ThemeSwitcher from './ThemeSwitcher'
 import Clock from './Clock'
-import ContactsButton from '../Contacts/ContactsButton'
 import MusicToggler from './MusicToggler'
+import MusicControls from './MusicControls'
+import ContactsButton from '../Contacts/ContactsButton'
 
 function Navbar() {
   return (
@@ -19,6 +20,7 @@ function Navbar() {
         </div>
       </div>
       <MusicToggler />
+      <MusicControls />
       <ThemeSwitcher />
     </Fragment>
   )
