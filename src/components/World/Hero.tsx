@@ -4,6 +4,7 @@ import { useMemo } from 'react'
 import type { ColorRepresentation, PerspectiveCamera } from 'three'
 import { calculateScreenSize } from '@/utils/helpers'
 import Screen from './Screen'
+import Title from './Title'
 import Floor from './Floor'
 
 export interface HeroProps extends GroupProps {
@@ -18,6 +19,7 @@ function Hero(props: HeroProps) {
   return (
     <group name={name} {...restProps}>
       <Screen position={[0, 0, -3]} width={width} height={height} color={color} />
+      <Title position={[0, 0, -2.5]} screenWidth={width} />
       <Floor position={[0, floorY, 0]} />
     </group>
   )
