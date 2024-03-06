@@ -2,6 +2,8 @@ import { Text } from '@react-three/drei'
 import { GroupProps } from '@react-three/fiber'
 import { useMemo } from 'react'
 
+const fontUrl = '/fonts/StaffX/Italic.woff'
+
 export interface TitleProps extends GroupProps {
   screenWidth: number
 }
@@ -13,10 +15,10 @@ function Title(props: TitleProps) {
 
   return (
     <group name={name} {...restProps}>
-      <Text position={[0, lineSpacing, 0]} font='/fonts/StaffX/Italic.woff' fontSize={fontSize}>
+      <Text position={[0, lineSpacing, 0]} font={fontUrl} fontSize={fontSize}>
         KURBANALI
       </Text>
-      <Text position={[0, -lineSpacing, 0]} font='/fonts/StaffX/Italic.woff' fontSize={fontSize}>
+      <Text position={[0, -lineSpacing, 0]} font={fontUrl} fontSize={fontSize}>
         RUSLAN
       </Text>
     </group>
