@@ -2,8 +2,7 @@ uniform float uSpeed;
 uniform float uLineWidth;
 uniform float uWobble;
 uniform float uWobbleTimeScale;
-uniform vec3 uColor1;
-uniform vec3 uColor2;
+uniform vec3 uSecondaryColor;
 
 varying vec3 vPosition;
 

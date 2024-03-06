@@ -3,7 +3,6 @@ import type { Object3DNode } from '@react-three/fiber'
 import { Color, Uniform } from 'three'
 import type { ColorRepresentation } from 'three'
 import Material from '@/api/Material'
-import { initialAccentColor } from '@/api/store'
 import shaders from './shaders'
 
 class ScreenMaterial extends Material {
@@ -11,8 +10,7 @@ class ScreenMaterial extends Material {
   public static readonly DEFAULT_LINE_WIDTH = 0.35
   public static readonly DEFAULT_WOBBLE = 0
   public static readonly DEFAULT_WOBBLE_TIME_SCALE = 1
-  public static readonly DEFAULT_COLOR_1 = initialAccentColor
-  public static readonly DEFAULT_COLOR_2 = '#000000'
+  public static readonly DEFAULT_SECONDARY_COLOR = '#000000'
 
   constructor() {
     super({
@@ -23,8 +21,7 @@ class ScreenMaterial extends Material {
         uLineWidth: new Uniform(ScreenMaterial.DEFAULT_LINE_WIDTH),
         uWobble: new Uniform(ScreenMaterial.DEFAULT_WOBBLE),
         uWobbleTimeScale: new Uniform(ScreenMaterial.DEFAULT_WOBBLE_TIME_SCALE),
-        uColor1: new Uniform(new Color(ScreenMaterial.DEFAULT_COLOR_1)),
-        uColor2: new Uniform(new Color(ScreenMaterial.DEFAULT_COLOR_2)),
+        uSecondaryColor: new Uniform(new Color(ScreenMaterial.DEFAULT_SECONDARY_COLOR)),
       },
     })
   }
@@ -57,18 +54,11 @@ class ScreenMaterial extends Material {
     this.uniforms.uWobbleTimeScale.value = v
   }
 
-  get color1() {
-    return this.uniforms.uColor1.value
+  get secondaryColor() {
+    return this.uniforms.uSecondaryColor.value
   }
-  set color1(v: ColorRepresentation) {
-    this.uniforms.uColor1.value.set(v)
-  }
-
-  get color2() {
-    return this.uniforms.uColor2.value
-  }
-  set color2(v: ColorRepresentation) {
-    this.uniforms.uColor2.value.set(v)
+  set secondaryColor(v: ColorRepresentation) {
+    this.uniforms.uSecondaryColor.value.set(v)
   }
 }
 

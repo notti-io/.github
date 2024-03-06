@@ -1,7 +1,6 @@
 uniform sampler2D tMap;
 uniform sampler2D tPos;
 uniform float uSize;
-uniform vec3 uColor;
 uniform float uAlpha;
 uniform float uRotation;
 

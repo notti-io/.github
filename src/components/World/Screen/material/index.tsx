@@ -5,8 +5,7 @@ export interface ScreenMaterialProps {
   lineWidth?: number
   wobble?: number
   wobbleTimeScale?: number
-  color1?: ColorRepresentation
-  color2?: ColorRepresentation
+  secondaryColor?: ColorRepresentation
 }
 
 function ScreenMaterial(props: ScreenMaterialProps) {

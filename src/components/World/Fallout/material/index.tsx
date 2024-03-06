@@ -1,13 +1,12 @@
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
-import type { ColorRepresentation, Object3D, Texture } from 'three'
+import type { Object3D, Texture } from 'three'
 import FalloutMaterialImpl from './FalloutMaterial'
 
 export interface FalloutMaterialProps {
   world?: Object3D | null
   map?: Texture
   size?: number
-  color?: ColorRepresentation
   alpha?: number
 }
 

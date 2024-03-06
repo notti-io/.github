@@ -1,14 +1,12 @@
 import { extend } from '@react-three/fiber'
 import type { Object3DNode } from '@react-three/fiber'
-import { AdditiveBlending, Color, Uniform } from 'three'
-import type { ColorRepresentation, Texture } from 'three'
+import { AdditiveBlending, Uniform } from 'three'
+import type { Texture } from 'three'
 import Material from '@/api/Material'
-import { initialAccentColor } from '@/api/store'
 import shaders from './shaders'
 
 class FalloutMaterial extends Material {
   public static readonly DEFAULT_SIZE = 0.61
-  public static readonly DEFAULT_COLOR = initialAccentColor
   public static readonly DEFAULT_ALPHA = 0.38
 
   constructor() {
@@ -19,7 +17,6 @@ class FalloutMaterial extends Material {
         tMap: new Uniform(null),
         tPos: new Uniform(null),
         uSize: new Uniform(FalloutMaterial.DEFAULT_SIZE),
-        uColor: new Uniform(new Color(FalloutMaterial.DEFAULT_COLOR)),
         uAlpha: new Uniform(FalloutMaterial.DEFAULT_ALPHA),
         uRotation: new Uniform(0),
       },
@@ -49,13 +46,6 @@ class FalloutMaterial extends Material {
   }
   set size(v: number) {
     this.uniforms.uSize.value = v
-  }
-
-  get color() {
-    return this.uniforms.uColor.value
-  }
-  set color(v: ColorRepresentation) {
-    this.uniforms.uColor.value.set(v)
   }
 
   get alpha() {

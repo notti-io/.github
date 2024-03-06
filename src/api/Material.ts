@@ -1,5 +1,5 @@
 import { ShaderMaterial } from 'three'
-import type { ShaderMaterialParameters, Vector2 } from 'three'
+import type { ColorRepresentation, ShaderMaterialParameters, Vector2 } from 'three'
 import Shader from './Shader'
 
 class Material extends ShaderMaterial {
@@ -26,6 +26,20 @@ class Material extends ShaderMaterial {
   }
   set DPR(v: number) {
     this.uniforms.DPR.value = v
+  }
+
+  get audioFrequency() {
+    return this.uniforms.audioFrequency.value
+  }
+  set audioFrequency(v: number) {
+    this.uniforms.audioFrequency.value = v
+  }
+
+  get accentColor() {
+    return this.uniforms.accentColor.value
+  }
+  set accentColor(v: ColorRepresentation) {
+    this.uniforms.accentColor.value.set(v)
   }
 
   private static parseArgs(args?: ShaderMaterialParameters): ShaderMaterialParameters | undefined {

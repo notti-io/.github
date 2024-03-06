@@ -1,7 +1,6 @@
 import type { GroupProps } from '@react-three/fiber'
 import { useTexture } from '@react-three/drei'
 import { useControls } from 'leva'
-import type { ColorRepresentation } from 'three'
 import Controls from '@/api/Controls'
 import useStore from '@/api/store'
 import FalloutMaterial from './material'
@@ -12,10 +11,6 @@ import FalloutSimulation from './geometry/FalloutSimulation'
 
 const falloutTexture = '/textures/fallout.jpg'
 
-export interface FalloutProps extends GroupProps {
-  color?: ColorRepresentation
-}
-
 const controls = Controls.folder('World', 'Fallout', {
   count: Controls.select(FalloutGeometryImpl.DEFAULT_COUNT, [4000, 90000, 16000, 25000, 36000, 49000, 64000, 81000, 100000, 1_000_000]),
   size: Controls.num(FalloutMaterialImpl.DEFAULT_SIZE, 0, 2),
@@ -25,8 +20,8 @@ const controls = Controls.folder('World', 'Fallout', {
   curlNoiseStrength: Controls.num(FalloutSimulation.DEFAULT_CURL_NOISE_STRENGTH),
 })
 
-function Fallout(props: FalloutProps) {
-  const { name = 'Fallout', color, ...restProps } = props
+function Fallout(props: GroupProps) {
+  const { name = 'Fallout', ...restProps } = props
   const args = useControls(...controls.get())
   const world = useStore(state => state.world)
   const texture = useTexture(falloutTexture)
@@ -34,7 +29,7 @@ function Fallout(props: FalloutProps) {
   return (
     <group name={name} {...restProps}>
       <points scale={[10, 5, 10]} position={[0, 0, -5]}>
-        <FalloutMaterial world={world} map={texture} size={args.size} color={color} alpha={args.alpha} />
+        <FalloutMaterial world={world} map={texture} size={args.size} alpha={args.alpha} />
         <FalloutGeometry
           count={args.count}
           curlNoiseScale={args.curlNoiseScale}

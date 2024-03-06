@@ -5,6 +5,7 @@ import FluidEffect from '@/components/PostProcessing/FluidEffect/FluidEffect'
 import { mediaQuery } from '@/utils/helpers'
 import { getAccentColor, getIsDebug, setAccentColor } from '@/utils/state'
 import Pointer from './Pointer'
+import Shader from './Shader'
 
 export interface Store {
   accentColor: string
@@ -57,11 +58,14 @@ export const initialAccentColor = getAccentColor()
 export const initialIsDebug = getIsDebug()
 export const initialIsPointerTouch = mediaQuery('(pointer: coarse)')
 
+Shader.updatedAccentColor(initialAccentColor)
+
 const useStore = create<Store>(set => ({
   accentColor: initialAccentColor,
   setAccentColor: accentColor => {
     set({ accentColor })
     setAccentColor(accentColor)
+    Shader.translateAccentColor(accentColor)
   },
 
   isContacts: false,

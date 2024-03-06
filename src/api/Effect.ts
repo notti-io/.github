@@ -1,6 +1,6 @@
 import { Effect as EffectImpl } from 'postprocessing'
 import type { BlendFunction, EffectAttribute, WebGLExtension } from 'postprocessing'
-import type { Uniform, Vector2 } from 'three'
+import type { ColorRepresentation, Uniform, Vector2 } from 'three'
 import Shader from './Shader'
 
 export interface EffectCoreOptions {
@@ -41,6 +41,20 @@ class Effect extends EffectImpl {
   }
   set DPR(v: number) {
     this.uniforms.get('DPR')!.value = v
+  }
+
+  get audioFrequency() {
+    return this.uniforms.get('audioFrequency')!.value
+  }
+  set audioFrequency(v: number) {
+    this.uniforms.get('audioFrequency')!.value = v
+  }
+
+  get accentColor() {
+    return this.uniforms.get('accentColor')!.value
+  }
+  set accentColor(v: ColorRepresentation) {
+    this.uniforms.get('accentColor')!.value.set(v)
   }
 
   private static extendArgs(args: EffectCoreArgs) {

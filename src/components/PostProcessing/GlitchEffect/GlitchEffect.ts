@@ -1,19 +1,16 @@
 import { extend } from '@react-three/fiber'
 import type { Object3DNode } from '@react-three/fiber'
-import { BlendFunction } from 'postprocessing'
-import { Color, Uniform } from 'three'
-import type { ColorRepresentation, Texture } from 'three'
-import Effect from '@/api/Effect'
-import { initialAccentColor } from '@/api/store'
-import fragmentShader from './shader.frag?raw'
 import gsap from 'gsap'
+import { BlendFunction } from 'postprocessing'
+import { Uniform } from 'three'
+import type { Texture } from 'three'
+import Effect from '@/api/Effect'
+import fragmentShader from './shader.frag?raw'
 
 class GlitchEffect extends Effect {
   public static readonly DEFAULT_PROGRESS = 0
   public static readonly DEFAULT_SCALE = 3.3
   public static readonly DEFAULT_DISTORT = 0.55
-  public static readonly DEFAULT_COLOR = initialAccentColor
-  public static readonly DEFAULT_UI_COLOR = initialAccentColor
   public static readonly DEFAULT_BLEND_FUNCTION = BlendFunction.NORMAL
 
   constructor(blendFunction = GlitchEffect.DEFAULT_BLEND_FUNCTION) {
@@ -28,7 +25,6 @@ class GlitchEffect extends Effect {
         ['uProgress', new Uniform(GlitchEffect.DEFAULT_PROGRESS)],
         ['uScale', new Uniform(GlitchEffect.DEFAULT_SCALE)],
         ['uDistort', new Uniform(GlitchEffect.DEFAULT_DISTORT)],
-        ['uColor', new Uniform(new Color(GlitchEffect.DEFAULT_COLOR))],
       ]),
     })
   }
@@ -73,13 +69,6 @@ class GlitchEffect extends Effect {
   }
   set distort(v: number) {
     this.uniforms.get('uDistort')!.value = v
-  }
-
-  get color() {
-    return this.uniforms.get('uColor')!.value
-  }
-  set color(v: ColorRepresentation) {
-    this.uniforms.get('uColor')!.value.set(v)
   }
 
   public translateProgress(progress: number) {

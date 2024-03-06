@@ -1,17 +1,24 @@
-import { Uniform, Vector2 } from 'three'
+import { Size } from '@react-three/fiber'
+import gsap from 'gsap'
+import { Color, Uniform, Vector2 } from 'three'
 import type { IUniform } from 'three'
 import shaderUtils from '@/utils/shader'
-import { Size } from '@react-three/fiber'
 
 export type MaterialUniforms = Record<string, IUniform>
 export type EffectUniforms = Map<string, Uniform>
 
 class Shader {
+  private static readonly ACCENT_COLOR = { color: '#ffffff' }
   private static readonly SHARED_UNIFORMS = {
     time: new Uniform(0),
     resolution: new Uniform(new Vector2(window.innerWidth, window.innerHeight)),
     DPR: new Uniform(window.devicePixelRatio),
     audioFrequency: new Uniform(0),
+    accentColor: new Uniform(new Color('#ffffff')),
+  }
+
+  public static getAccentColor() {
+    return Shader.ACCENT_COLOR.color
   }
 
   public static updateSharedUniforms(time: number, size: Size, DPR?: number) {
@@ -24,6 +31,22 @@ class Shader {
     Shader.SHARED_UNIFORMS.audioFrequency.value = frequency
   }
 
+  public static updatedAccentColor(color: string) {
+    Shader.ACCENT_COLOR.color = color
+    Shader.SHARED_UNIFORMS.accentColor.value.set(color)
+  }
+
+  public static translateAccentColor(color: string) {
+    gsap.to(Shader.ACCENT_COLOR, {
+      color,
+      ease: 'sine.inOut',
+      duration: 1,
+      onUpdate: () => {
+        Shader.SHARED_UNIFORMS.accentColor.value.set(Shader.ACCENT_COLOR.color)
+      },
+    })
+  }
+
   public static extend(shader?: string): string | undefined {
     if (!shader) return shader
     for (const [key, value] of Object.entries(Shader.SHARED_UNIFORMS)) {
@@ -31,6 +54,7 @@ class Shader {
       if (typeof value.value === 'number') type = 'float'
       if (typeof value.value === 'boolean') type = 'bool'
       if (value.value instanceof Vector2) type = 'vec2'
+      if (value.value instanceof Color) type = 'vec3'
       const uniform = `uniform ${type} ${key};`
       if (!shader.includes(uniform)) {
         shader = `${uniform}\n${shader}`

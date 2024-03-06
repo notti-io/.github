@@ -1,13 +1,11 @@
 import { extend } from '@react-three/fiber'
 import type { Object3DNode } from '@react-three/fiber'
 import { BlendFunction } from 'postprocessing'
-import { Color, ColorRepresentation, Uniform } from 'three'
+import { Uniform } from 'three'
 import Effect from '@/api/Effect'
-import { initialAccentColor } from '@/api/store'
 import fragmentShader from './shader.frag?raw'
 
 class GlowEffect extends Effect {
-  public static readonly DEFAULT_COLOR = initialAccentColor
   public static readonly DEFAULT_PHONE = 0
   public static readonly DEFAULT_BLEND_FUNCTION = BlendFunction.SCREEN
 
@@ -16,18 +14,8 @@ class GlowEffect extends Effect {
       name: 'Glow',
       fragmentShader,
       blendFunction,
-      uniforms: new Map<string, Uniform>([
-        ['uColor', new Uniform(new Color(GlowEffect.DEFAULT_COLOR))],
-        ['uPhone', new Uniform(GlowEffect.DEFAULT_PHONE)],
-      ]),
+      uniforms: new Map<string, Uniform>([['uPhone', new Uniform(GlowEffect.DEFAULT_PHONE)]]),
     })
-  }
-
-  get color() {
-    return this.uniforms.get('uColor')!.value
-  }
-  set color(v: ColorRepresentation) {
-    this.uniforms.get('uColor')!.value.set(v)
   }
 
   get phone() {

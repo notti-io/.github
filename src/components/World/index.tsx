@@ -29,8 +29,8 @@ function World() {
       <Fog />
       <Audio />
       <group ref={setWorld} name='World'>
-        <Fallout color={accentColor} />
-        <Hero color={accentColor} />
+        <Fallout />
+        <Hero />
       </group>
     </Fragment>
   )

@@ -21,7 +21,6 @@ function GlitchEffect({ enabled }: { enabled: boolean }) {
   const ref = useRef<GlitchEffectImpl>(null)
   const args = useControls(...controls.get())
   const isContacts = useStore(state => state.isContacts)
-  const accentColor = useStore(state => state.accentColor)
   const texture = useTexture(glitchTexture)
   const [fluid, fluidMask] = useFluid()
 
@@ -46,7 +45,6 @@ function GlitchEffect({ enabled }: { enabled: boolean }) {
       fluidMask={fluidMask}
       scale={args.scale}
       distort={args.distort}
-      color={accentColor}
     />
   )
 }
