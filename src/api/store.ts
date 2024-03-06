@@ -1,6 +1,6 @@
 import type { Mesh, Object3D } from 'three'
 import { create } from 'zustand'
-import { Icon } from '@/assets'
+import { Icon, musics } from '@/assets'
 import FluidEffect from '@/components/PostProcessing/FluidEffect/FluidEffect'
 import { mediaQuery } from '@/utils/helpers'
 import { getAccentColor, getIsDebug, setAccentColor } from '@/utils/state'
@@ -41,6 +41,16 @@ export interface Store {
 
   fluid: FluidEffect | null
   setFluid: (fluid: FluidEffect | null) => void
+
+  musicReady: boolean
+  setMusicReady: (musicReady: boolean) => void
+
+  musicPlaying: boolean
+  setMusicPlaying: (musicPlaying: boolean) => void
+
+  musicIndex: number
+  playNextMusic: () => void
+  playPrevMusic: () => void
 }
 
 export const initialAccentColor = getAccentColor()
@@ -98,6 +108,24 @@ const useStore = create<Store>(set => ({
 
   fluid: null,
   setFluid: fluid => set({ fluid }),
+
+  musicReady: false,
+  setMusicReady: musicReady => set({ musicReady }),
+
+  musicPlaying: false,
+  setMusicPlaying: musicPlaying => set({ musicPlaying }),
+
+  musicIndex: 0,
+  playNextMusic: () =>
+    set(state => {
+      state.musicIndex = (state.musicIndex + 1) % musics.length
+      return state
+    }),
+  playPrevMusic: () =>
+    set(state => {
+      state.musicIndex = (state.musicIndex - 1 + musics.length) % musics.length
+      return state
+    }),
 }))
 
 export default useStore

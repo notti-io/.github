@@ -6,11 +6,13 @@ import LevaGui from '@/components/LevaGui'
 import Cursor from '@/components/Cursor'
 import useDebug from '@/hooks/useDebug'
 import usePointer from '@/hooks/usePointer'
+import useInitMusic from '@/hooks/useInitMusic'
 import '@/App.scss'
 
 function App() {
   useDebug()
   usePointer()
+  useInitMusic()
 
   return (
     <Fragment>
