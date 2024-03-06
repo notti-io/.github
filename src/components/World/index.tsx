@@ -1,4 +1,4 @@
-import { Fragment, Suspense, useEffect } from 'react'
+import { Fragment, useEffect } from 'react'
 import { useControls } from 'leva'
 import Controls from '@/api/Controls'
 import useStore, { initialAccentColor } from '@/api/store'
@@ -27,9 +27,7 @@ function World() {
     <Fragment>
       <ambientLight />
       <Fog />
-      <Suspense fallback={null}>
-        <Audio />
-      </Suspense>
+      <Audio />
       <group ref={setWorld} name='World'>
         <Fallout color={accentColor} />
         <Hero color={accentColor} />
