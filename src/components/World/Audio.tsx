@@ -5,13 +5,11 @@ import Shader from '@/api/Shader'
 import useStore from '@/api/store'
 import { musics } from '@/assets'
 
-function createAudioContext() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return new (window.AudioContext || (window as any).webkitAudioContext)()
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const AudioContext = window.AudioContext || (window as any).webkitAudioContext
+const context = new AudioContext()
 
 function createAudio(buffer: AudioBuffer) {
-  const context = createAudioContext()
   const source = context.createBufferSource()
   const gain = context.createGain()
   const analyser = context.createAnalyser()
@@ -83,7 +81,6 @@ function AudioAnalyser({ buffer }: { buffer: AudioBuffer }) {
 async function createAudionBuffer(url: string) {
   const res = await fetch(url)
   const buffer = await res.arrayBuffer()
-  const context = createAudioContext()
   return await new Promise<AudioBuffer | null>(res => context.decodeAudioData(buffer, res, () => res(null)))
 }
 
