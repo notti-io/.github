@@ -256,6 +256,21 @@ body {
       background-color: white;
       transition: transform var(--transition);
     }
+    &-icon {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: white;
+      svg {
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
     &-aura {
       position: absolute;
       display: block;

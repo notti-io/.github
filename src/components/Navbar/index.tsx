@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import ThemeSwitcher from './ThemeSwitcher'
 import Clock from './Clock'
 import ContactsButton from '../Contacts/ContactsButton'
+import MusicToggler from './MusicToggler'
 
 function Navbar() {
   return (
@@ -17,6 +18,7 @@ function Navbar() {
           <ContactsButton />
         </div>
       </div>
+      <MusicToggler />
       <ThemeSwitcher />
     </Fragment>
   )
