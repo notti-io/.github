@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { EmailIcon, GitHubIcon, Icon, LinkedInIcon, NextIcon, PauseIcon, PlayIcon, ResumeIcon, TelegramIcon, XIcon } from '@/assets'
+import { EmailIcon, GitHubIcon, Icon, LinkedInIcon, MusicIcon, NextIcon, PauseIcon, PlayIcon, ResumeIcon, TelegramIcon, XIcon } from '@/assets'
 import { useMemo } from 'react'
 
 export interface CursorIconProps {
@@ -16,6 +16,8 @@ function CursorIcon({ icon, size }: CursorIconProps) {
         return GitHubIcon
       case 'LinkedIn':
         return LinkedInIcon
+      case 'Music':
+        return MusicIcon
       case 'Next':
         return NextIcon
       case 'Play':
