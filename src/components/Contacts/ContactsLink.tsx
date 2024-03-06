@@ -27,7 +27,7 @@ function ContactsLink(props: ContactsLinkProps) {
         rel='noreferrer'
         className='contacts-socials-link'
         variants={{
-          hidden: { y: '100%', pointerEvents: 'none' },
+          hidden: { y: '101%', pointerEvents: 'none' },
           visible: { y: 0, pointerEvents: 'auto' },
         }}
         initial='hidden'
