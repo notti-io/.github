@@ -193,7 +193,7 @@ body {
 }
 
 .navbar {
-  z-index: 5;
+  z-index: 4;
   position: fixed;
   mix-blend-mode: difference;
   display: flex;
@@ -230,8 +230,6 @@ body {
   }
 
   &-button {
-    z-index: 5;
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -240,13 +238,17 @@ body {
     height: 1em;
     padding: 0.3em;
     font-size: 2.5rem;
-    bottom: 0.5rem;
     background-color: transparent;
-    &-left {
-      left: 0.5rem;
-    }
-    &-right {
-      right: 0.5rem;
+    &-fixed {
+      z-index: 4;
+      position: fixed;
+      bottom: 0.5rem;
+      &.navbar-button-left {
+        left: 0.5rem;
+      }
+      &.navbar-button-right {
+        right: 0.5rem;
+      }
     }
     &-circle {
       display: block;
@@ -315,7 +317,7 @@ body {
 }
 
 .contacts {
-  z-index: 2;
+  z-index: 3;
   position: fixed;
   top: 0;
   right: 0;
