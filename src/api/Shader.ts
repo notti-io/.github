@@ -11,12 +11,17 @@ class Shader {
     time: new Uniform(0),
     resolution: new Uniform(new Vector2(window.innerWidth, window.innerHeight)),
     DPR: new Uniform(window.devicePixelRatio),
+    audioFrequency: new Uniform(0),
   }
 
   public static updateSharedUniforms(time: number, size: Size, DPR?: number) {
     Shader.SHARED_UNIFORMS.time.value = time
     Shader.SHARED_UNIFORMS.resolution.value.set(size.width, size.height)
     Shader.SHARED_UNIFORMS.DPR.value = DPR ?? window.devicePixelRatio
+  }
+
+  public static updateAudioFrequency(frequency: number) {
+    Shader.SHARED_UNIFORMS.audioFrequency.value = frequency
   }
 
   public static extend(shader?: string): string | undefined {

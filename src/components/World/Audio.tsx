@@ -1,39 +1,65 @@
+import { useFrame } from '@react-three/fiber'
 import { Suspense, useEffect, useMemo } from 'react'
 import { suspend } from 'suspend-react'
+import Shader from '@/api/Shader'
 import useStore from '@/api/store'
 import { musics } from '@/assets'
 
-function getAudioContext() {
+function createAudioContext() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return new (window.AudioContext || (window as any).webkitAudioContext)()
 }
 
 function createAudio(buffer: AudioBuffer) {
-  const context = getAudioContext()
+  const context = createAudioContext()
   const source = context.createBufferSource()
   const gain = context.createGain()
   const analyser = context.createAnalyser()
+  const data = new Uint8Array(analyser.frequencyBinCount)
   source.buffer = buffer
-  source.connect(analyser)
   gain.gain.value = 0.2
   analyser.fftSize = 64
-  analyser.connect(gain)
   let started = false
+  let isPlaying = false
   return {
-    context,
-    gain,
-    source,
-    play: () => {
-      if (!started) {
-        source.start(0)
-        started = true
-      } else {
-        context.resume()
+    createEffect() {
+      source.connect(analyser)
+      gain.connect(context.destination)
+      analyser.connect(gain)
+      return () => {
+        source.disconnect()
+        gain.disconnect()
+        analyser.disconnect()
       }
     },
-    pause: () => {
-      if (!started) return
-      context.suspend()
+    subscribeEnd(callback: () => void) {
+      source.onended = callback
+      return () => {
+        source.onended = null
+      }
+    },
+    setPlaying(playing: boolean) {
+      isPlaying = playing
+      if (playing) {
+        if (!started) {
+          source.start(0)
+          started = true
+        } else {
+          context.resume()
+        }
+      } else {
+        if (!started) return
+        context.suspend()
+      }
+    },
+    updateData() {
+      if (!isPlaying) return 0
+      analyser.getByteFrequencyData(data)
+      let sum = 0
+      for (let i = 0; i < data.length; i++) {
+        sum += data[i]
+      }
+      return sum / data.length / 5
     },
   }
 }
@@ -41,39 +67,28 @@ function createAudio(buffer: AudioBuffer) {
 function AudioAnalyser({ buffer }: { buffer: AudioBuffer }) {
   const musicPlaying = useStore(state => state.musicPlaying)
   const playNextMusic = useStore(state => state.playNextMusic)
-  const { context, gain, source, play, pause } = useMemo(() => createAudio(buffer), [buffer])
+  const { createEffect, subscribeEnd, setPlaying, updateData } = useMemo(() => createAudio(buffer), [buffer])
 
-  useEffect(() => {
-    gain.connect(context.destination)
-    return () => {
-      gain.disconnect()
-    }
-  }, [gain, context])
+  useEffect(createEffect, [createEffect])
+  useEffect(() => subscribeEnd(playNextMusic), [subscribeEnd, playNextMusic])
+  useEffect(() => setPlaying(musicPlaying), [setPlaying, musicPlaying])
 
-  useEffect(() => {
-    source.onended = () => playNextMusic()
-    return () => {
-      source.onended = null
-    }
-  }, [playNextMusic, source])
-
-  useEffect(() => {
-    if (musicPlaying) play()
-    else pause()
-  }, [musicPlaying, play, pause])
+  useFrame(() => {
+    Shader.updateAudioFrequency(updateData())
+  })
 
   return null
 }
 
-async function loadAudio(url: string) {
+async function createAudionBuffer(url: string) {
   const res = await fetch(url)
   const buffer = await res.arrayBuffer()
-  const context = getAudioContext()
+  const context = createAudioContext()
   return await new Promise<AudioBuffer | null>(res => context.decodeAudioData(buffer, res, () => res(null)))
 }
 
 function AudioProvider({ url }: { url: string }) {
-  const buffer = suspend(() => loadAudio(url), [url])
+  const buffer = suspend(() => createAudionBuffer(url), [url])
 
   if (!buffer) return null
 
