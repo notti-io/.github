@@ -7,7 +7,7 @@ import shaders from './shaders'
 
 class ScreenMaterial extends Material {
   public static readonly DEFAULT_SPEED = 0.2
-  public static readonly DEFAULT_LINE_WIDTH = 0.35
+  public static readonly DEFAULT_LINE_WIDTH = 0.55
   public static readonly DEFAULT_WOBBLE = 0
   public static readonly DEFAULT_WOBBLE_TIME_SCALE = 1
   public static readonly DEFAULT_SECONDARY_COLOR = '#000000'

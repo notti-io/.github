@@ -32,8 +32,13 @@ class Shader {
     Shader.SHARED_UNIFORMS.DPR.value = DPR ?? window.devicePixelRatio
   }
 
-  public static updateAudioFrequency(frequency: number) {
-    Shader.SHARED_UNIFORMS.audioFrequency.value = frequency
+  public static translateAudioFrequency(frequency: number) {
+    if (Shader.SHARED_UNIFORMS.audioFrequency.value === frequency) return
+    gsap.to(Shader.SHARED_UNIFORMS.audioFrequency, {
+      value: frequency,
+      ease: 'sine.inOut',
+      duration: 0.1,
+    })
   }
 
   public static updatedAccentColor(color: string) {
@@ -54,6 +59,7 @@ class Shader {
   }
 
   public static translateLoader(onComplete: () => void) {
+    if (Shader.SHARED_UNIFORMS.loader.value === 1) return onComplete()
     gsap.to(Shader.SHARED_UNIFORMS.loader, {
       value: 1,
       ease: 'sine.inOut',
