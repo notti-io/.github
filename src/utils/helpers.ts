@@ -1,5 +1,6 @@
 import { DataTexture, FloatType, HalfFloatType, NearestFilter, RGBAFormat, WebGLRenderTarget } from 'three'
 import type { PerspectiveCamera } from 'three'
+import type { Music } from '@/assets'
 
 export function noop() {}
 
@@ -88,9 +89,15 @@ export function randomHexColor() {
   return hslToHex(hue, 100, 50)
 }
 
-export function shuffleArray<T>(array: T[]): T[] {
-  return array
+export function shuffleMusics(musics: Music[]) {
+  const newArray = musics
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value)
+  if (newArray[0].url.includes('Rick Astley')) {
+    const temp = newArray[0]
+    newArray[0] = newArray[1]
+    newArray[1] = temp
+  }
+  return newArray
 }

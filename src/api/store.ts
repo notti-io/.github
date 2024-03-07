@@ -61,7 +61,12 @@ export const initialIsPointerTouch = mediaQuery('(pointer: coarse)')
 
 Shader.updatedAccentColor(initialAccentColor)
 
-const findRickRollIndex = () => musics.findIndex(music => music.url.includes('Rick Astley'))
+const makeRickRoll = (index: number) => {
+  const rickRollIndex = musics.findIndex(music => music.url.includes('Rick Astley'))
+  const temp = musics[index]
+  musics[index] = musics[rickRollIndex]
+  musics[rickRollIndex] = temp
+}
 
 const useStore = create<Store>(set => ({
   accentColor: initialAccentColor,
@@ -126,26 +131,22 @@ const useStore = create<Store>(set => ({
   musicIndex: 0,
   playNextMusic: () =>
     set(state => {
-      let index = state.musicIndex
+      const nextIndex = (state.musicIndex + 1) % musics.length
       if (state.firstTimeSwitchingMusic) {
+        makeRickRoll(nextIndex)
         state.firstTimeSwitchingMusic = false
-        index = findRickRollIndex()
-      } else {
-        index = (state.musicIndex + 1) % musics.length
       }
-      state.musicIndex = index
+      state.musicIndex = nextIndex
       return state
     }),
   playPrevMusic: () =>
     set(state => {
-      let index = state.musicIndex
+      const nextIndex = (state.musicIndex - 1 + musics.length) % musics.length
       if (state.firstTimeSwitchingMusic) {
+        makeRickRoll(nextIndex)
         state.firstTimeSwitchingMusic = false
-        index = findRickRollIndex()
-      } else {
-        index = (state.musicIndex - 1 + musics.length) % musics.length
       }
-      state.musicIndex = index
+      state.musicIndex = nextIndex
       return state
     }),
 }))

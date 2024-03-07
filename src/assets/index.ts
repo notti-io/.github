@@ -1,6 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 
-import { shuffleArray } from '@/utils/helpers'
+import { shuffleMusics } from '@/utils/helpers'
 
 export type Icon = 'Email' | 'GitHub' | 'LinkedIn' | 'Resume' | 'Telegram' | 'X' | 'Play' | 'Pause' | 'Next' | 'Music'
 
@@ -20,7 +20,7 @@ export interface Music {
   href: string
 }
 
-export const musics: Music[] = shuffleArray([
+export const musics: Music[] = shuffleMusics([
   {
     url: '/musics/Natalia Doco, Mattend - Quedate Luna.mp3',
     href: 'https://soundcloud.com/mattend/natalia-doco-mattend-quedate-luna-tiktok-remix',
