@@ -87,3 +87,10 @@ export function randomHexColor() {
   const hue = random(0, 360)
   return hslToHex(hue, 100, 50)
 }
+
+export function shuffleArray<T>(array: T[]): T[] {
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+}

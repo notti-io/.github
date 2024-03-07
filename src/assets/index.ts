@@ -1,4 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
+
+import { shuffleArray } from '@/utils/helpers'
+
 export type Icon = 'Email' | 'GitHub' | 'LinkedIn' | 'Resume' | 'Telegram' | 'X' | 'Play' | 'Pause' | 'Next' | 'Music'
 
 export { default as EmailIcon } from './email.svg?react'
@@ -17,7 +20,7 @@ export interface Music {
   href: string
 }
 
-export const musics: Music[] = [
+export const musics: Music[] = shuffleArray([
   {
     url: '/musics/Alok Bruno Martini feat. Zeeba - Hear Me Now.mp3',
     href: 'https://music.apple.com/ru/album/hear-me-now/1337209538?i=1337209540',
@@ -42,4 +45,4 @@ export const musics: Music[] = [
     url: '/musics/Restricted - Big Jet Plane.mp3',
     href: 'https://music.apple.com/kz/album/big-jet-plane/1658524066?i=1658524143',
   },
-]
+])
