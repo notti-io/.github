@@ -2,8 +2,8 @@
   --duration: 0.6s;
   --easing: cubic-bezier(0.25, 1, 0.5, 1);
   --transition: var(--duration) var(--easing);
-  --staff-x: 'StaffX', sans-serif;
-  --ubuntu: 'Ubuntu Mono', sans-serif;
+  --wide: 'Montserrat', sans-serif;
+  --mono: 'Ubuntu Mono', sans-serif;
 }
 
 * {
@@ -42,7 +42,7 @@ html {
 body {
   text-size-adjust: 100%;
   color: white;
-  font-family: var(--ubuntu);
+  font-family: var(--mono);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -227,7 +227,7 @@ body {
     line-height: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 0.07rem;
-    font-family: var(--ubuntu);
+    font-family: var(--mono);
     color: white;
   }
 
@@ -397,7 +397,7 @@ body {
     }
     &-link {
       color: transparent;
-      font-family: var(--staff-x);
+      font-family: var(--wide);
       font-size: 5vw;
       line-height: 1;
       text-transform: uppercase;

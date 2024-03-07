@@ -3,7 +3,7 @@ import { GroupProps, useFrame } from '@react-three/fiber'
 import { useMemo, useRef } from 'react'
 import Shader from '@/api/Shader'
 
-const fontUrl = '/fonts/StaffX/Italic.woff'
+const fontUrl = '/fonts/Montserrat/Italic.ttf'
 const color = '#ffffff'
 
 export interface TitleProps extends GroupProps {
