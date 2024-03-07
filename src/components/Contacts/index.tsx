@@ -18,6 +18,7 @@ const contacts: ContactSocial[] = [
 ]
 
 function Contacts() {
+  const isLoading = useStore(state => state.isLoading)
   const open = useStore(state => state.isContacts)
 
   return (
@@ -26,7 +27,7 @@ function Contacts() {
         {contacts.map((link, index) => (
           <ContactsLink
             key={link.title}
-            open={open}
+            open={open && !isLoading}
             title={link.title}
             href={link.href}
             icon={link.icon}

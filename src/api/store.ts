@@ -8,6 +8,9 @@ import Pointer from './Pointer'
 import Shader from './Shader'
 
 export interface Store {
+  isLoading: boolean
+  setIsLoading: (isLoading: boolean) => void
+
   accentColor: string
   setAccentColor: (accentColor: string) => void
 
@@ -69,6 +72,9 @@ const makeRickRoll = (index: number) => {
 }
 
 const useStore = create<Store>(set => ({
+  isLoading: true,
+  setIsLoading: isLoading => set({ isLoading }),
+
   accentColor: initialAccentColor,
   setAccentColor: accentColor => {
     set({ accentColor })

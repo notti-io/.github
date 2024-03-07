@@ -17,7 +17,7 @@ function Cursor() {
   const isOut = useStore(state => state.isPointerOut)
   const isDown = useStore(state => state.isPointerDown)
   const isHovering = useStore(state => state.isHovering)
-  const isLoading = false
+  const isLoading = useStore(state => state.isLoading)
   const icon = useStore(state => state.isHoveringIcon)
   const [isIcon, setIsIcon] = useState(false)
   const [bufferIcon, setBufferIcon] = useState(icon)
