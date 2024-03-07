@@ -477,3 +477,20 @@ body {
     }
   }
 }
+
+.loader {
+  z-index: 4;
+  position: fixed;
+  right: 1em;
+  bottom: 0.75em;
+  font-weight: bold;
+  font-size: 4rem;
+  color: white;
+  mix-blend-mode: difference;
+  overflow: hidden;
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    right: 1em;
+    bottom: 1em;
+  }
+}
