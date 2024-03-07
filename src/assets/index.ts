@@ -57,9 +57,8 @@ export const musics: Music[] = shuffleArray([
     url: '/musics/Restricted - Big Jet Plane.mp3',
     href: 'https://soundcloud.com/itsrestricted/big-jet-plane-1',
   },
+  {
+    url: '/musics/Rick Astley - Never Gonna Give You Up.mp3',
+    href: 'https://soundcloud.com/rick-astley-official/never-gonna-give-you-up-4',
+  },
 ])
-
-musics.splice(1, 0, {
-  url: '/musics/Rick Astley - Never Gonna Give You Up.mp3',
-  href: 'https://soundcloud.com/rick-astley-official/never-gonna-give-you-up-4',
-})

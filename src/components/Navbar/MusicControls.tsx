@@ -14,7 +14,7 @@ function MusicControls() {
   const title = useMemo(() => {
     const title = musics[musicIndex].url.replace('/musics/', '').replace('.mp3', '')
     if (title.startsWith('Rick Astley')) {
-      return `............. ${title}`
+      return `________________ ${title}`
     }
     return title
   }, [musicIndex])
