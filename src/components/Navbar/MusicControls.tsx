@@ -45,14 +45,23 @@ function MusicControls() {
           <NextIcon />
         </span>
       </NavbarButton>
-      <a ref={ref} href={href} target='_blank' rel='noopener' className='music-controls-text'>
+      <motion.a
+        ref={ref}
+        href={href}
+        target='_blank'
+        rel='noopener'
+        className='music-controls-text'
+        initial={{ opacity: 0, pointerEvents: 'none' }}
+        animate={{ opacity: 1, pointerEvents: 'auto' }}
+        transition={{ ease: [0.25, 1, 0.5, 1], duration: 1 }}
+      >
         <motion.div className='music-controls-text-line' style={{ x }}>
           {title}&nbsp;&nbsp;&nbsp;
         </motion.div>
         <motion.div className='music-controls-text-line' style={{ x }}>
           {title}&nbsp;&nbsp;&nbsp;
         </motion.div>
-      </a>
+      </motion.a>
       <NavbarButton id='play-next' onClick={playNextMusic} side='right' fixed={false}>
         <span className='navbar-button-icon navbar-button-icon-big'>
           <NextIcon />
