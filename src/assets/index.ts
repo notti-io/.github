@@ -38,10 +38,6 @@ export const musics: Music[] = shuffleMusics([
     href: 'https://youtube.com/watch?v=zyXmsVwZqX4',
   },
   {
-    url: '/musics/CiDE & Vide - Late At Night (feat. Jordan Grace) [NCS Release].mp3',
-    href: 'https://youtube.com/watch?v=nABAzVR2txM',
-  },
-  {
     url: '/musics/Naeleck - Burning Wish (feat. Roniit) [NCS Release].mp3',
     href: 'https://youtube.com/watch?v=42N-FeSAql4',
   },
