@@ -9,6 +9,7 @@ class Pointer {
     this.base = new Vector2(0, 0)
     this.vector = new Vector2(-1, 1)
     this.isMoved = false
+    this.set(window.innerWidth / 2, window.innerHeight / 2)
   }
 
   get baseX() {

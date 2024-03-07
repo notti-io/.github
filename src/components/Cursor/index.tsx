@@ -28,7 +28,10 @@ function Cursor() {
   const auraRef = useRef<HTMLDivElement>(null)
   const iconRef = useRef<HTMLDivElement>(null)
 
-  const auraPosition = useRef({ x: -auraRadius, y: -auraRadius })
+  const auraPosition = useRef({
+    x: window.innerWidth / 2 - auraRadius,
+    y: window.innerHeight / 2 - auraRadius,
+  })
 
   const containerClassName = useMemo(
     () =>
