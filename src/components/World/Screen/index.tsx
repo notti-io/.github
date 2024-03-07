@@ -25,6 +25,7 @@ function Screen(props: ScreenProps) {
   const { width, height, name = 'Screen', ...restProps } = props
   const rectLightRef = useRef<RectAreaLight>(null)
   const prevAccentColor = useRef<string>('')
+  const prevLightIntensity = useRef<number>(-1)
   const args = useControls(...controls.get())
   const setScreen = useStore(state => state.setScreen)
 
@@ -33,6 +34,13 @@ function Screen(props: ScreenProps) {
     const accentColor = Shader.getAccentColor()
     if (prevAccentColor.current !== accentColor) {
       rectLightRef.current.color.set(accentColor)
+      prevAccentColor.current = accentColor
+    }
+    const loader = Shader.getLoader()
+    const lightIntensity = args.lightIntensity * loader
+    if (prevLightIntensity.current !== lightIntensity) {
+      rectLightRef.current.intensity = lightIntensity
+      prevLightIntensity.current = lightIntensity
     }
   })
 
@@ -42,7 +50,7 @@ function Screen(props: ScreenProps) {
         <planeGeometry args={[1, 1]} />
         <ScreenMaterial speed={args.speed} lineWidth={args.lineWidth} secondaryColor={args.secondaryColor} />
       </mesh>
-      <rectAreaLight ref={rectLightRef} intensity={args.lightIntensity} width={width} height={height} rotation-y={Math.PI} />
+      <rectAreaLight ref={rectLightRef} width={width} height={height} rotation-y={Math.PI} />
     </group>
   )
 }

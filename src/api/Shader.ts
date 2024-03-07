@@ -22,6 +22,10 @@ class Shader {
     return Shader.ACCENT_COLOR.color
   }
 
+  public static getLoader() {
+    return Shader.SHARED_UNIFORMS.loader.value
+  }
+
   public static updateSharedUniforms(time: number, size: Size, DPR?: number) {
     Shader.SHARED_UNIFORMS.time.value = time
     Shader.SHARED_UNIFORMS.resolution.value.set(size.width, size.height)
