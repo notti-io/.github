@@ -11,7 +11,13 @@ function MusicControls() {
   const musicIndex = useStore(state => state.musicIndex)
   const playPrevMusic = useStore(state => state.playPrevMusic)
   const playNextMusic = useStore(state => state.playNextMusic)
-  const title = useMemo(() => musics[musicIndex].url.replace('/musics/', '').replace('.mp3', ''), [musicIndex])
+  const title = useMemo(() => {
+    const title = musics[musicIndex].url.replace('/musics/', '').replace('.mp3', '')
+    if (title.startsWith('Rick Astley')) {
+      return `............. ${title}`
+    }
+    return title
+  }, [musicIndex])
   const href = useMemo(() => musics[musicIndex].href, [musicIndex])
   const x = useMotionValue('0%')
 
