@@ -90,14 +90,8 @@ export function randomHexColor() {
 }
 
 export function shuffleMusics(musics: Music[]) {
-  const newArray = musics
+  return musics
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value)
-  if (newArray[0].url.includes('Rick Astley')) {
-    const temp = newArray[0]
-    newArray[0] = newArray[1]
-    newArray[1] = temp
-  }
-  return newArray
 }

@@ -52,7 +52,6 @@ export interface Store {
   musicPlaying: boolean
   setMusicPlaying: (musicPlaying: boolean) => void
 
-  firstTimeSwitchingMusic: boolean
   musicIndex: number
   playNextMusic: () => void
   playPrevMusic: () => void
@@ -63,13 +62,6 @@ export const initialIsDebug = getIsDebug()
 export const initialIsPointerTouch = mediaQuery('(pointer: coarse)')
 
 Shader.updatedAccentColor(initialAccentColor)
-
-const makeRickRoll = (index: number) => {
-  const rickRollIndex = musics.findIndex(music => music.url.includes('Rick Astley'))
-  const temp = musics[index]
-  musics[index] = musics[rickRollIndex]
-  musics[rickRollIndex] = temp
-}
 
 const useStore = create<Store>(set => ({
   isLoading: true,
@@ -133,28 +125,9 @@ const useStore = create<Store>(set => ({
   musicPlaying: false,
   setMusicPlaying: musicPlaying => set({ musicPlaying }),
 
-  firstTimeSwitchingMusic: true,
   musicIndex: 0,
-  playNextMusic: () =>
-    set(state => {
-      const nextIndex = (state.musicIndex + 1) % musics.length
-      if (state.firstTimeSwitchingMusic) {
-        makeRickRoll(nextIndex)
-        state.firstTimeSwitchingMusic = false
-      }
-      state.musicIndex = nextIndex
-      return state
-    }),
-  playPrevMusic: () =>
-    set(state => {
-      const nextIndex = (state.musicIndex - 1 + musics.length) % musics.length
-      if (state.firstTimeSwitchingMusic) {
-        makeRickRoll(nextIndex)
-        state.firstTimeSwitchingMusic = false
-      }
-      state.musicIndex = nextIndex
-      return state
-    }),
+  playNextMusic: () => set(state => ({ musicIndex: (state.musicIndex + 1) % musics.length })),
+  playPrevMusic: () => set(state => ({ musicIndex: (state.musicIndex - 1 + musics.length) % musics.length })),
 }))
 
 export default useStore

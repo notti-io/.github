@@ -30,35 +30,27 @@ export const musics: Music[] = shuffleMusics([
     href: 'https://soundcloud.com/jidanofu/drink-a-yak',
   },
   {
-    url: '/musics/DVRST - Close Eyes.mp3',
-    href: 'https://soundcloud.com/wazmusic/close-eyes',
+    url: '/musics/Zeli - Only The Fallen [NCS Release].mp3',
+    href: 'https://youtube.com/watch?v=HipT91U3ujA',
   },
   {
-    url: '/musics/Burak Yeter ft. Danelle Sandoval - Tuesday.mp3',
-    href: 'https://soundcloud.com/burakyeter/burakyeter-tuesday',
+    url: '/musics/Cartoon, Jéja - Why We Lose (feat. Coleman Trapp) [NCS Release].mp3',
+    href: 'https://youtube.com/watch?v=zyXmsVwZqX4',
   },
   {
-    url: '/musics/Karma Fields - Edge of the World.mp3',
-    href: 'https://soundcloud.com/karmafields/edge-of-the-world',
+    url: '/musics/CiDE & Vide - Late At Night (feat. Jordan Grace) [NCS Release].mp3',
+    href: 'https://youtube.com/watch?v=nABAzVR2txM',
   },
   {
-    url: '/musics/NGHTMRE - Burn Out.mp3',
-    href: 'https://soundcloud.com/nghtmre/burn-out',
+    url: '/musics/Naeleck - Burning Wish (feat. Roniit) [NCS Release].mp3',
+    href: 'https://youtube.com/watch?v=42N-FeSAql4',
   },
   {
-    url: '/musics/Yellow Claw & Flux Pavilon feat. Naaz - Catch Me.mp3',
-    href: 'https://soundcloud.com/yellowclaw/yellow-claw-flux-pavilion-catch-me-feat-naaz',
+    url: '/musics/Poylow - Victory (feat. Godmode) [NCS Release].mp3',
+    href: 'https://youtube.com/watch?v=bqbctutaRmQ',
   },
   {
-    url: '/musics/Shanguy - La Louze.mp3',
-    href: 'https://soundcloud.com/shanguymusic/shanguy-la-louze',
-  },
-  {
-    url: '/musics/Restricted - Big Jet Plane.mp3',
-    href: 'https://soundcloud.com/itsrestricted/big-jet-plane-1',
-  },
-  {
-    url: '/musics/Rick Astley - Never Gonna Give You Up.mp3',
-    href: 'https://soundcloud.com/rick-astley-official/never-gonna-give-you-up-4',
+    url: '/musics/Anixto - Ride Or Die [NCS Release].mp3',
+    href: 'https://youtube.com/watch?v=EpREvrcOKjQ',
   },
 ])
