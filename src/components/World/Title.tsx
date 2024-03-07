@@ -14,7 +14,7 @@ function Title(props: TitleProps) {
   const { screenWidth, name = 'Title', ...restProps } = props
   const firstLineRef = useRef<{ fillOpacity?: number }>(null)
   const secondLineRef = useRef<{ fillOpacity?: number }>(null)
-  const fontSize = useMemo(() => screenWidth / 10, [screenWidth])
+  const fontSize = useMemo(() => Math.max(screenWidth / 10, 0.2), [screenWidth])
   const lineSpacing = useMemo(() => fontSize / 2, [fontSize])
   const prevOpacity = useRef<number>(-1)
 
