@@ -4,20 +4,21 @@ import Clock from './Clock'
 import MusicToggler from './MusicToggler'
 import MusicControls from './MusicControls'
 import ContactsButton from '../Contacts/ContactsButton'
+import NavbarItem from './NavbarItem'
 
 function Navbar() {
   return (
     <Fragment>
       <div className='navbar'>
-        <div className='navbar-item'>
+        <NavbarItem>
           <div className='navbar-text'>{import.meta.env.VITE_NICK_NAME}</div>
-        </div>
-        <div className='navbar-item'>
+        </NavbarItem>
+        <NavbarItem>
           <Clock />
-        </div>
-        <div className='navbar-item'>
+        </NavbarItem>
+        <NavbarItem>
           <ContactsButton />
-        </div>
+        </NavbarItem>
       </div>
       <MusicToggler />
       <MusicControls />
