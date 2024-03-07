@@ -7,10 +7,11 @@ uniform float uRotation;
 varying float vAlpha;
 
 #import{rotateUv};
+#import{getAccentColor};
 
 void main() {
   vec2 uv = rotateUv(gl_PointCoord.xy, uRotation);
   float mask = texture2D(tMap, uv).r;
   float alpha = uAlpha * vAlpha * mask;
-  gl_FragColor = vec4(accentColor, alpha);
+  gl_FragColor = vec4(getAccentColor(), alpha);
 }

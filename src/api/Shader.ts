@@ -15,6 +15,7 @@ class Shader {
     DPR: new Uniform(window.devicePixelRatio),
     audioFrequency: new Uniform(0),
     accentColor: new Uniform(new Color('#ffffff')),
+    loader: new Uniform(0),
   }
 
   public static getAccentColor() {
@@ -37,6 +38,7 @@ class Shader {
   }
 
   public static translateAccentColor(color: string) {
+    if (color === Shader.ACCENT_COLOR.color) return
     gsap.to(Shader.ACCENT_COLOR, {
       color,
       ease: 'sine.inOut',
@@ -44,6 +46,15 @@ class Shader {
       onUpdate: () => {
         Shader.SHARED_UNIFORMS.accentColor.value.set(Shader.ACCENT_COLOR.color)
       },
+    })
+  }
+
+  public static translateLoader(onComplete: () => void) {
+    gsap.to(Shader.SHARED_UNIFORMS.loader, {
+      value: 1,
+      ease: 'sine.inOut',
+      duration: 1,
+      onComplete,
     })
   }
 

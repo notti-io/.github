@@ -8,6 +8,7 @@ uniform float uDistort;
 #import{scaleUv};
 #import{curlNoise};
 #import{blending};
+#import{getAccentColor};
 
 void mainUv(inout vec2 uv) {
   uv = scaleUv(uv, vec2(1.0 - uProgress * 0.1, 1.0), vec2(1.0, 0.5));
@@ -25,10 +26,10 @@ void mainUv(inout vec2 uv) {
 
 void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor) {
   vec3 color = inputColor.rgb;
-  color = mix(color, blendSubtract(accentColor, color), uProgress);
+  color = mix(color, blendSubtract(getAccentColor(), color), uProgress);
   color = mix(color, color * 0.3, uProgress);
   color = mix(color, vec3(0.24), 0.4 * uProgress);
-  color = mix(color, blendOverlay(color, accentColor), uProgress * 0.3);
+  color = mix(color, blendOverlay(color, getAccentColor()), uProgress * 0.3);
 
   outputColor = vec4(color + vec3(-0.1) * uProgress, inputColor.a);
 }

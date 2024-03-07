@@ -8,6 +8,7 @@ varying vec3 vPosition;
 
 #import{perlinNoise};
 #import{line};
+#import{getAccentColor};
 
 void main() {
   vec2 newUv = vPosition.xy;
@@ -15,7 +16,7 @@ void main() {
   newUv += vec2(noiseValue);
   newUv = vec2(fract((newUv.x + newUv.y) * 5.0), newUv.y);
   float strength = line(newUv, (uLineWidth * audioFrequency) / 2.0);
-  vec3 mixedColor = mix(accentColor, uSecondaryColor, strength);
+  vec3 mixedColor = mix(getAccentColor(), uSecondaryColor, strength);
 
   gl_FragColor = vec4(mixedColor, 1.0);
 }

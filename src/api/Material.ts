@@ -42,6 +42,13 @@ class Material extends ShaderMaterial {
     this.uniforms.accentColor.value.set(v)
   }
 
+  get loader() {
+    return this.uniforms.loader.value
+  }
+  set loader(v: number) {
+    this.uniforms.loader.value = v
+  }
+
   private static parseArgs(args?: ShaderMaterialParameters): ShaderMaterialParameters | undefined {
     if (!args) return args
     args.fragmentShader = Shader.extend(args.fragmentShader)

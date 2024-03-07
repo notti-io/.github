@@ -57,6 +57,13 @@ class Effect extends EffectImpl {
     this.uniforms.get('accentColor')!.value.set(v)
   }
 
+  get loader() {
+    return this.uniforms.get('loader')!.value
+  }
+  set loader(v: number) {
+    this.uniforms.get('loader')!.value = v
+  }
+
   private static extendArgs(args: EffectCoreArgs) {
     args.fragmentShader = Shader.extend(args.fragmentShader)!
     args.vertexShader = Shader.extend(args.vertexShader)
