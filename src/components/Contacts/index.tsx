@@ -9,12 +9,31 @@ interface ContactSocial {
 }
 
 const contacts: ContactSocial[] = [
-  { title: 'Email', href: `mailto:${import.meta.env.VITE_EMAIL}`, icon: 'Email' },
-  { title: 'LinkedIn', href: `https://linkedin.com/in/${import.meta.env.VITE_LINKEDIN_HANDLE}`, icon: 'LinkedIn' },
-  { title: 'GitHub', href: `https://github.com/${import.meta.env.VITE_GITHUB_HANDLE}`, icon: 'GitHub' },
-  { title: 'Telegram', href: `https://t.me/${import.meta.env.VITE_TELEGRAM_HANDLE}`, icon: 'Telegram' },
-  { title: 'X / Twitter', href: `https://twitter.com/${import.meta.env.VITE_TWITTER_HANDLE}`, icon: 'X' },
-  { title: 'Resume', href: `/${import.meta.env.VITE_RESUME_FILE_NAME}.pdf`, icon: 'Resume' },
+  {
+    title: 'Email',
+    href: `mailto:${import.meta.env.VITE_EMAIL}`,
+    icon: 'Email',
+  },
+  {
+    title: 'LinkedIn',
+    href: `https://linkedin.com/in/${import.meta.env.VITE_LINKEDIN_HANDLE}`,
+    icon: 'LinkedIn',
+  },
+  {
+    title: 'GitHub',
+    href: `https://github.com/${import.meta.env.VITE_GITHUB_HANDLE}`,
+    icon: 'GitHub',
+  },
+  {
+    title: 'Telegram',
+    href: `https://t.me/${import.meta.env.VITE_TELEGRAM_HANDLE}`,
+    icon: 'Telegram',
+  },
+  {
+    title: 'X / Twitter',
+    href: `https://twitter.com/${import.meta.env.VITE_TWITTER_HANDLE}`,
+    icon: 'X',
+  },
 ]
 
 function Contacts() {
