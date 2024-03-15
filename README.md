@@ -4,7 +4,7 @@
 
 ## Overview
 
-This is the repository of [Kurbanali Ruslan](https://kurr.dev) portfolio.
+This is the repository of [my personal website](https://kurr.dev).
 
 Initially project made with plain JavaScript, Webpack and Three.js back in 2019. This project originates from that time with some updates and improvements.
 
